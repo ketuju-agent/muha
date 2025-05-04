@@ -1,0 +1,107 @@
+---
+import "../../../../packages/ui/globals.css";
+import { AstroSeo } from "@astrolib/seo";
+import Config from "../../site.config.js";
+---
+
+<AstroSeo
+  title={Config.title}
+  description={Config.description}
+  canonical={Config.url}
+  openGraph={{
+    url: "https://klolatoko.ketuju.com",
+    title: Config.title,
+    description: Config.description,
+    images: [
+      {
+        url: Config.url,
+        width: 1200,
+        height: 630,
+        alt: "Open Graph Image Alt",
+        type: "image/jpeg",
+      },
+    ],
+    site_name: Config.title,
+    type: "website",
+    locale: "en_US",
+  }}
+  twitter={{
+    handle: "@yourhandle",
+    site: "@yoursite",
+    cardType: "summary_large_image",
+  }}
+/>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Basic Meta Tags -->
+<meta name="keywords" content="keyword1, keyword2, keyword3" />
+<meta name="author" content="Ketuju by Raizora" />
+
+<!-- Favicons -->
+<link rel="icon" href="./public/favicons/favicon.ico" sizes="any" />
+<link rel="icon" href="./public/favicons/icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="./public/favicons/apple-touch-icon.png" />
+<link rel="manifest" href="./public/favicons/site.webmanifest" />
+
+<!-- Favicon for IE -->
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+<!-- Favicons for different sizes -->
+<link rel="icon" type="image/png" sizes="16x16" href="./public/favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="./public/favicons/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="48x48" href="./public/favicons/favicon-48x48.png" />
+
+<!-- Open Graph / Facebook -->
+<meta
+  property="og:image"
+  content="https://www.yourwebsite.com/path/to/image.jpg"
+/>
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Config.url} />
+<meta property="twitter:title" content={Config.title} />
+<meta
+  property="twitter:description"
+  content={Config.description}
+/>
+<meta
+  property="twitter:image"
+  content="https://www.yourwebsite.com/path/to/image.jpg"
+/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href={Config.description} />
+
+<!-- Additional SEO -->
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+
+<!-- Apple Touch Icon (already included in favicons, but keeping for backwards compatibility) -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Theme Color for Mobile Browsers -->
+<meta name="theme-color" content="#ffffff" />
+
+<!-- For IE -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- Inter Font: https://rsms.me/inter/ -->
+<link rel="preconnect" href="https://rsms.me/" />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+  rel="stylesheet"
+/>
+<!---
+Alpine.js
+--->
+<!---- Alpine integrations -->
+
+<script defer src="https://unpkg.com/@alpinejs/focus@3.10.3/dist/cdn.min.js"
+></script>
+<script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>

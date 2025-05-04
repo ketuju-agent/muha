@@ -1,0 +1,40 @@
+{
+    "extends": [
+        "@commitlint/config-conventional"
+    ],
+    "rules": {
+        "scope-enum": [
+            2,
+            "always",
+            [
+                "erp",
+                "ui",
+                "utils",
+                "analytics",
+                "logger",
+                "env",
+                "kv",
+                "deps",
+                "release",
+                "core"
+            ]
+        ],
+        "type-enum": [
+            2,
+            "always",
+            [
+                "feat",
+                "fix",
+                "docs",
+                "style",
+                "refactor",
+                "perf",
+                "test",
+                "build",
+                "ci",
+                "chore",
+                "revert"
+            ]
+        ]
+    }
+}

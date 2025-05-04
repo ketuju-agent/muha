@@ -1,0 +1,22 @@
+.main {
+    height: 250vh;
+}
+
+.mask {
+    position: sticky;
+    top: 0px;
+    height: 100vh;
+    overflow: hidden;
+    -webkit-mask-image: url(https://mdn.github.io/shared-assets/images/examples/mask-star.svg);
+    mask-image: url(https://mdn.github.io/shared-assets/images/examples/mask-star.svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+    mask-position: center center;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

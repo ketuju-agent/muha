@@ -1,0 +1,138 @@
+---
+// Define the data for each section and its pages
+const pages = [
+  {
+    title: "Overview",
+    categories: [
+      {
+        name: "Pages",
+        links: [
+          { href: "/", text: "Home" },
+          { href: "/infopages/about", text: "About us" },
+          { href: "/404", text: "Error 404" },
+        ],
+      },
+      {
+        name: "Forms",
+        links: [
+          { href: "/forms/sign-in", text: "Sign In" },
+          { href: "/forms/sign-up", text: "Sign Up" },
+          { href: "/forms/reset", text: "Reset" },
+          { href: "/forms/contact", text: "Contact" },
+          { href: "/forms/bookings", text: "Book a visit" },
+          { href: "/forms/sell-property", text: "Sell Property" },
+        ],
+      },
+      {
+        name: "System",
+        links: [
+          { href: "/system/style-guide", text: "Style Guide" },
+          {
+            href: "https://lexingtonthemes.com/legal/license",
+            text: "License",
+          },
+          {
+            href: "https://lexingtonthemes.com/legal/support/",
+            text: "Support",
+          },
+          {
+            href: "https://lexingtonthemes.com/documentation/quick-start",
+            text: "Documentation",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Content collections",
+    categories: [
+      {
+        name: "Blog",
+        links: [
+          { href: "/blog/home", text: "Blog home" },
+          { href: "/blog/posts/1", text: "Blog post" },
+          { href: "/blog/tags", text: "Tag index" },
+          { href: "/blog/tags/website", text: "Tag category" },
+          { href: "/rss.xml", text: "RSS" },
+        ],
+      },
+      {
+        name: "Properties for sale",
+        links: [
+          { href: "/for-sale/home", text: "Home" },
+          { href: "/for-sale/1", text: "Details" },
+        ],
+      },
+      {
+        name: "Properties for rent",
+        links: [
+          { href: "/for-rent/home", text: "Home" },
+          { href: "/for-rent/1", text: "Details" },
+        ],
+      },
+      {
+        name: "Agents",
+        links: [
+          { href: "/agents/home", text: "Home" },
+          { href: "/agents/1", text: "Details" },
+        ],
+      },
+      {
+        name: "Info Pages",
+        links: [
+          { href: "/infopages/faq", text: "FAQ" },
+          { href: "/infopages/dmca", text: "DMCA" },
+          { href: "/infopages/terms", text: "Terms" },
+          { href: "/infopages/privacy", text: "Privacy Policy" },
+          {
+            href: "/infopages/fair-housign-statement",
+            text: "Fair Housign Statement",
+          },
+        ],
+      },
+    ],
+  },
+];
+---
+
+<section>
+  <div class="px-8 pb-12 lg:pt-32">
+    <h1
+      class="text-balance text-3xl capitalize md:text-5xl lg:text-4xl text-black">
+      Overview
+    </h1>
+    <div class="space-y-20 mt-20">
+      {
+        pages.map((section) => (
+          <div class=" grid lg:grid-cols-3 pt-8 mt-40 border-t border-gray-200">
+            <span class="text-3xl font-light text-black      ">
+              {section.title}
+            </span>
+            <div class=" gap-y-12 gap-x-6 grid grid-cols-2 xl:grid-cols-3 lg:col-span-2">
+              {section.categories.map((category) => (
+                <div class="flex flex-col gap-4 ">
+                  <h3 class="text-2xl font-light text-black ">
+                    {category.name}
+                  </h3>
+                  <ul
+                    role="list"
+                    class="grid grid-cols-1 gap-2   lg:col-span-2">
+                    {category.links.map((link) => (
+                      <li>
+                        <a
+                          href={link.href}
+                          class="text-gray-500 hover:text-black duration-200">
+                          {link.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

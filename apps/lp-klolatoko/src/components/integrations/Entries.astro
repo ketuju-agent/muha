@@ -1,0 +1,158 @@
+---
+const { integration, description, logo, permissions, url } = Astro.props;
+---
+
+<div
+  class="rounded-2xl bg-chalk border border-zinc-200 p-8 h-full flex flex-col justify-between"
+>
+  <div>
+    <img class="size-12" src={logo} alt={integration} />
+    <p class="font-display text-xl mt-12 tracking-tight text-black">
+      {integration}
+    </p>
+    <p class="mt-2 text-zinc-500 text-sm text-pretty">
+      {description}
+    </p>
+  </div>
+
+  <div class="mt-8 flex gap-2">
+    <div x-data="{ open: false }">
+      <button
+        x-on:click="open = true"
+        class="relative rounded-lg w-full border p-2 text-sm font-semibold transition-all flex items-center justify-center bg-white text-zinc-500 hover:text-accent-500 size-10 border-zinc-300"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-plug"
+          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M9.785 6l8.215 8.215l-2.054 2.054a5.81 5.81 0 1 1 -8.215 -8.215l2.054 -2.054z"
+          ></path><path d="M4 20l3.5 -3.5"></path><path d="M15 4l-3.5 3.5"
+          ></path><path d="M20 9l-3.5 3.5"></path></svg
+        >
+      </button>
+
+      <div
+        x-show="open"
+        style="display: none"
+        x-on:keydown.escape.prevent.stop="open = false"
+        role="dialog"
+        aria-modal="true"
+        x-id="['modal-title']"
+        :aria-labelledby="$id('modal-title')"
+        class="fixed inset-0 z-10 overflow-y-auto w-full"
+      >
+        <!-- Overlay -->
+        <div
+          x-show="open"
+          x-transition.opacity
+          class="fixed inset-0 bg-regent-200 bg-opacity-50 w-full"
+        >
+        </div>
+        <!-- Panel -->
+        <div
+          x-show="open"
+          x-transition
+          x-on:click="open = false"
+          class="relative flex min-h-screen items-center justify-center p-4 w-full"
+        >
+          <div
+            x-on:click.stop
+            x-trap.noscroll.inert="open"
+            class="relative w-full max-w-xl overflow-y-auto rounded-2xl bg-chalk border p-8 border-zinc-200"
+          >
+            <div class="inline-flex gap-2 items-center">
+              <img class="size-8" src={logo} alt={integration} />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-arrows-left-right size-6"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M21 17l-18 0"></path>
+                <path d="M6 10l-3 -3l3 -3"></path>
+                <path d="M3 7l18 0"></path>
+                <path d="M18 20l3 -3l-3 -3"></path>
+              </svg>
+              <img class="size-8" src="/assets/brightlight.svg" alt="#_" />
+            </div>
+            <h2
+              class="text-2xl mt-6 font-medium text-black"
+              :id="$id('modal-title')"
+            >
+              Connect {integration} to Brightlight
+            </h2>
+            <!-- Content -->
+            <p class="mt-6 text-zinc-500 text-sm text-balance">
+              Give priority to tasks and projects based on the requirements of
+              your customers, and establish a closer feedback loop with them.
+            </p>
+            <div class="mt-6 text-left">
+              <p>{integration} would like to:</p>
+              <ul class="mt-4 text-left space-y-2 text-zinc-500" role="list">
+                {
+                  permissions.map((permission) => (
+                    <li class="flex items-center gap-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-circle-check-filled size-5"
+                        viewBox="0 0 24 24"
+                        stroke-width="1"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path
+                          d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                          stroke-width="0"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      {permission}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div
+              class="flex flex-col lg:flex-row gap-1 items-center mt-12 w-full"
+            >
+              <button
+                type="submit"
+                class="rounded-lg px-4 border py-2 text-sm font-semibold transition-all ml-auto flex items-center justify-center bg-chalk text-zinc-500 hover:text-accent-500 h-10 border-zinc-300"
+              >
+                Cancel</button
+              >
+              <button
+                type="submit"
+                class="rounded-lg px-4 py-2 text-sm font-semibold transition-all flex items-center justify-center text-white bg-gradient-to-b from-accent-500 to-accent-600 hover:to-accent-700 h-10"
+              >
+                Allow access</button
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a
+      href={url}
+      title={integration}
+      class="rounded-lg px-4 border py-2 w-full text-sm font-semibold transition-all flex items-center justify-center bg-white text-zinc-500 hover:text-accent-500 h-10 border-zinc-300"
+      >Learn more
+    </a>
+  </div>
+</div>

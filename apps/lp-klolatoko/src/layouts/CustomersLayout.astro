@@ -1,0 +1,87 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+  <section>
+    <div class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-12 lg:py-36">
+      <div class="max-w-3xl mx-auto">
+        <div class="p-8 lg:px-32 bg-chalk rounded-xl border border-zinc-200">
+          <img
+            class="w-full h-full"
+            src={frontmatter.logo.url}
+            alt={frontmatter.logo.alt}
+          />
+        </div>
+        <h1
+          class="text-3xl mt-12 font-normal tracking-tight text-black font-display text-balance"
+        >
+          {frontmatter.customer}
+        </h1>
+        <p class="mt-4 text-zinc-500 text-balance">
+          {frontmatter.feedback}
+        </p>
+      </div>
+      <div class="prose-styles">
+        <slot />
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-12 lg:py-36">
+      <h1 class="text-4xl lg:text-6xl font-medium text-black">
+        {frontmatter.customer}
+      </h1>
+      <p class="mt-4 text-lg text-black/80 font-medium text-balance">
+        {frontmatter.feedback}
+      </p>
+      <div class="prose-styles">
+        <slot />
+      </div>
+      <div class="lg:flex border-t">
+        <div class="lg:ml-auto lg:pl-12 lg:w-1/2">
+          <div class="pt-8 lg:sticker lg:sticky pb-16 top-0">
+            <div>
+              <div class="lg:pl-36 md:pl-12">
+                <nav
+                  class="bg-regent-100 ring-regent-200 divide-y ring-1 divide-regent-200 ring-inset"
+                  aria-label="Sidebar"
+                >
+                  <div class="lg:p-8 p-4">
+                    <img
+                      class="invert"
+                      src={frontmatter.logo.url}
+                      alt={frontmatter.logo.alt}
+                    />
+                    <p
+                      class="text-base mt-8 font-medium text-balance text-gray-500"
+                    >
+                      {frontmatter.about}
+                    </p>
+                  </div>
+                  <div class="lg:p-8 p-4 space-y-2">
+                    {
+                      Object.entries(frontmatter.details).map(
+                        ([key, value]) => (
+                          <div>
+                            <p class="text-black font-medium text-lg block">
+                              {key}
+                            </p>
+                            <p class="text-gray-500 mt-2 tracking-wide">
+                              {value}
+                            </p>
+                          </div>
+                        )
+                      )
+                    }
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

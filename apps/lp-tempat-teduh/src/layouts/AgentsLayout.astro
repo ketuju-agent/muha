@@ -1,0 +1,417 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+  <section class="overflow-hidden">
+    <div class="px-8 pb-12">
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div>
+          <h1
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            class="text-balance text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl text-black"
+          >
+            {frontmatter.name}
+          </h1>
+          <p
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            class="mt-4 text-gray-500 2xl:text-lg"
+          >
+            {frontmatter.role}
+          </p>
+          <div class="mt-8 pt-8 border-t border-gray-200 text-xs 2xl:text-sm">
+            <p data-aos="fade-up" data-aos-duration="1500" class="text-black">
+              Intro
+            </p>
+            <p
+              data-aos="fade-up"
+              data-aos-duration="2500"
+              class="mt-4 text-gray-500 text-pretty"
+            >
+              {frontmatter.intro}
+            </p>
+          </div>
+          <div class="mt-8 pt-8 border-t border-gray-200 text-xs 2xl:text-sm">
+            <p data-aos="fade-up" data-aos-duration="1500" class="text-black">
+              Contact
+            </p>
+            <ul
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              class="list-none mt-4 text-gray-500 space-y-1"
+            >
+              {
+                frontmatter.contact.map((contact) => (
+                  <>
+                    <li>
+                      <a class="hover:text-black " href={contact.item}>
+                        {contact.item}
+                      </a>
+                    </li>
+                  </>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="mt-8 pt-8 border-t border-gray-200 text-xs 2xl:text-sm">
+            <p data-aos="fade-up" data-aos-duration="1500" class="text-black">
+              Address
+            </p>
+            <address>
+              <ul
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                class="list-none mt-4 text-gray-500 space-y-1"
+              >
+                <li>
+                  {frontmatter.office}
+                </li>
+                <li>
+                  {frontmatter.officeAddress}
+                </li>
+              </ul>
+            </address>
+          </div>
+          <div class="mt-8 pt-8 border-t border-gray-200 text-xs 2xl:text-sm">
+            <p data-aos="fade-up" data-aos-duration="1500" class="text-black">
+              Languages
+            </p>
+            <ul
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              class="list-none mt-4 text-gray-500 space-y-1"
+            >
+              {
+                frontmatter.languages.map((languages) => (
+                  <>
+                    <li>{languages.item}</li>
+                  </>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+        <div class="lg:col-span-2 order-first">
+          <img
+            class="w-full aspect-square 2xl:aspect-[4/3] object-cover object-top"
+            src={frontmatter.avatar.url}
+            alt={frontmatter.avatar.alt}
+          />
+        </div>
+      </div>
+      <div
+        class="grid lg:grid-cols-3 pt-8 mt-40 border-t border-gray-200 border-gray-200"
+      >
+        <dl class="flex flex-col gap-y-8">
+          {
+            frontmatter.stats.map((stats) => (
+              <>
+                <div class="flex flex-col-reverse gap-y-3 ">
+                  <dt
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                    class="text-gray-500"
+                  >
+                    {stats.value}
+                  </dt>
+                  <dd
+                    data-aos="fade-up"
+                    data-aos-duration="1500"
+                    class="text-6xl 2xl:text-9xl       text-black"
+                  >
+                    {stats.key}
+                  </dd>
+                </div>
+              </>
+            ))
+          }
+        </dl>
+        <div
+          class="lg:col-span-2 2xl:col-start-2"
+          data-aos="fade-up"
+          data-aos-duration="2000"
+        >
+          <h3 class="text-3xl text-black lg:text-pretty">
+            Who is {frontmatter.name}
+          </h3>
+          <div class="prose-styles 2xl:max-w-none 2xl:prose-lg mt-6">
+            <slot />
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid lg:grid-cols-3 pt-8 mt-40 border-t border-gray-200 border-gray-200"
+      >
+        <dl
+          class="lg:col-span-2 lg:col-start-2"
+          data-aos="fade-up"
+          data-aos-duration="2000"
+        >
+          <dd class="text-3xl text-black lg:text-pretty">
+            Exclusive Properties
+          </dd>
+          <dd class="mt-6 text-pretty text-gray-500 2xl:text-lg">
+            {frontmatter.name} has been the main realtor for many of our clients.
+            This are the properties that she has sold.
+          </dd>
+        </dl>
+        <div
+          data-aos="fade-up"
+          data-aos-duration="2500"
+          class="col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
+        >
+          {
+            frontmatter.images.map((image) => (
+              <img
+                class="aspect-[4/3] group-hover:scale-110 transition-transform object-cover object-center
+        duration-500"
+                src={image.url}
+                alt={image.alt}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="px-8 pb-12">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-3 gap-24 2xl:gap-8 pt-8 border-t border-gray-200 border-gray-200 mt-40"
+      >
+        <div class="bg-black 2xl:p-20 p-8">
+          <div class="flex flex-col gap-y-8">
+            <img
+              class="aspect-square object-cover object-top"
+              src={frontmatter.avatar.url}
+              alt={frontmatter.avatar.alt}
+            />
+            <div>
+              <h1
+                data-aos="fade-up"
+                data-aos-duration="1500"
+                class="text-balance text-3xl md:text-5xl lg:text-4xl text-white"
+              >
+                {frontmatter.name}
+              </h1>
+              <p
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                class="mt-2 text-gray-300 2xl:text-lg"
+              >
+                {frontmatter.role}
+              </p>
+            </div>
+          </div>
+          <div
+            class="mt-8 pt-8 border-t border-gray-200 border-gray-700 text-xs 2xl:text-sm"
+          >
+            <p data-aos="fade-up" data-aos-duration="1500" class="text-white">
+              Intro
+            </p>
+            <p
+              data-aos="fade-up"
+              data-aos-duration="2500"
+              class="mt-4 text-gray-300 text-pretty"
+            >
+              {frontmatter.intro}
+            </p>
+          </div>
+
+          <div
+            class="mt-8 pt-8 border-t border-gray-200 border-gray-700 text-xs 2xl:text-sm"
+          >
+            <p data-aos="fade-up" data-aos-duration="1500" class="text-white">
+              Address
+            </p>
+            <address>
+              <ul
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                class="list-none mt-4 text-gray-300 space-y-1"
+              >
+                <li>
+                  {frontmatter.office}
+                </li>
+                <li>
+                  {frontmatter.officeAddress}
+                </li>
+              </ul>
+            </address>
+          </div>
+          <div
+            class="mt-8 pt-8 border-t border-gray-200 text-xs 2xl:text-sm border-gray-700"
+          >
+            <p data-aos="fade-up" data-aos-duration="1500" class="text-white">
+              Languages
+            </p>
+            <ul
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              class="list-none mt-4 text-gray-300 space-y-1"
+            >
+              {
+                frontmatter.languages.map((languages) => (
+                  <>
+                    <li>{languages.item}</li>
+                  </>
+                ))
+              }
+            </ul>
+          </div>
+          <div
+            class="flex w-full mt-8 pt-8 border-t border-gray-200 border-gray-700"
+          >
+            <button
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              type="submit"
+              class="relative group overflow-hidden h-16 text-white w-auto"
+            >
+              <div
+                aria-hidden="true"
+                class="transition duration-300 group-hover:-translate-y-16 w-full"
+              >
+                <div class="h-16 flex items-center justify-center">
+                  <span>Add to contact</span>
+                </div>
+                <div class="h-16 flex items-center justify-center">
+                  <span>Add to contact</span>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="lg:col-span-2 flex flex-col h-full justify-between">
+          <form>
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+              <div>
+                <label
+                  for="first-name"
+                  class="block text-xl font-light text-black">First name</label
+                >
+                <div>
+                  <input
+                    type="text"
+                    name="first-name"
+                    id="first-name"
+                    autocomplete="given-name"
+                    class="block w-full h-12 border-0 py-1.5 border-b border-gray-200 text-black ring-transparent focus:ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="last-name"
+                  class="block text-xl font-light text-black">Last name</label
+                >
+                <div>
+                  <input
+                    type="text"
+                    name="last-name"
+                    id="last-name"
+                    autocomplete="family-name"
+                    class="block w-full h-12 border-0 py-1.5 border-b border-gray-200 text-black ring-transparent focus:ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="total-rooms"
+                  class="block text-xl font-light text-black">Total rooms</label
+                >
+                <div>
+                  <input
+                    type="number"
+                    name="total-rooms"
+                    id="total-rooms"
+                    autocomplete="family-name"
+                    class="block w-full h-12 border-0 py-1.5 border-b border-gray-200 text-black ring-transparent focus:ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm"
+                  />
+                </div>
+              </div>
+              <div>
+                <label for="email" class="block text-xl font-light text-black"
+                  >Email address</label
+                >
+                <div>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    class="block w-full h-12 border-0 py-1.5 border-b border-gray-200 text-black ring-transparent focus:ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm"
+                  />
+                </div>
+              </div>
+
+              <div class="col-span-full">
+                <label for="message" class="block text-xl font-light text-black"
+                  >Message</label
+                >
+                <div>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    class="block w-full border-0 py-1.5 border-b border-gray-200 text-black ring-transparent focus:ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="flex w-full mt-8">
+              <button
+                type="submit"
+                class="relative group overflow-hidden px-12 h-16 bg-black text-white w-auto"
+              >
+                <div
+                  aria-hidden="true"
+                  class="transition duration-300 group-hover:-translate-y-16 w-full"
+                >
+                  <div class="h-16 flex items-center justify-center">
+                    <span>Submit</span>
+                  </div>
+                  <div class="h-16 flex items-center justify-center">
+                    <span>Submit</span>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </form>
+          <div
+            class="mt-40 pt-8 border-t border-gray-200 text-gray-500 text-xs 2xl:text-sm space-y-4 border-gray-200"
+          >
+            <p>
+              Yes, I would like more information from Quartiere's International
+              Realty. Please use and/or share my information with a Quartiere's
+              International Realty agent to contact me about my real estate
+              needs.
+            </p>
+            <p>
+              By clicking SEND MESSAGE, I agree a Quartiere's International
+              Realty Agent may contact me by phone or text message including by
+              automated means about real estate services, and that I can access
+              real estate services without providing my phone number. I
+              acknowledge that I have read and agree to the
+              <a
+                title="Your title"
+                aria-label="Your title"
+                class="text-black hover:text-gray-500 underline"
+                href="/infopages/terms">Terms</a
+              > of Use and <a
+                title="Your title"
+                aria-label="Your title"
+                class="text-black hover:text-gray-500 underline"
+                href="/infopages/privacy">Privacy Policy</a
+              >.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

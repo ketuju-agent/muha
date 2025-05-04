@@ -1,0 +1,57 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import EntriesOne from "@/components/EntriesOne.astro";
+import { getCollection } from "astro:content";
+import EntriesOne from "@/components/blog/EntriesOne.astro";
+export async function getStaticPaths() {
+  const allPosts = await getCollection("posts");
+  const uniqueTags = [
+    ...new Set(allPosts.map((post) => post.data.tags).flat()),
+  ];
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+import Subscribe from "@/components/ctas/Subscribe.astro";
+---
+
+<BaseLayout pageTitle={tag}>
+  <section class="overflow-hidden">
+    <div class="px-8 pb-12 lg:pt-32">
+      <h1
+        data-aos="fade-up"
+        data-aos-duration="1500"
+        class="text-balance text-3xl capitalize md:text-5xl lg:text-4xl text-black"
+      >
+        {tag}
+      </h1>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-40 border-t border-gray-200 pt-8"
+      >
+        {
+          posts.map((post) => (
+            <EntriesOne
+              url={"/blog/posts/" + post.slug}
+              title={post.data.title}
+              description={post.data.description}
+              alt={post.data.title}
+              pubDate={post.data.pubDate.toString().slice(0, 10)}
+              author={post.data.author}
+              image={post.data.image.url}
+              avatar={post.data.avatar.url}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <Subscribe />
+</BaseLayout>

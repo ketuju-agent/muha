@@ -1,0 +1,52 @@
+---
+const images = [
+  {
+    src: "/assets/phone1.png",
+    alt: "Lexingtøn thumbnail",
+    visibility: "always", // Always visible
+  },
+  {
+    src: "/assets/phone4.png",
+    alt: "Lexingtøn thumbnail",
+    visibility: "sm", // Visible on sm screens and above
+  },
+  {
+    src: "/assets/phone7.png",
+    alt: "Lexingtøn thumbnail",
+    visibility: "md", // Visible on md screens and above
+  },
+];
+---
+
+<section>
+  <div class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-12 lg:py-32">
+    <div class="sm:text-center">
+      <p class="text-3xl font-normal text-black font-display">
+        Empowering users with
+        <span class="sm:block text-accent-500">
+          full control over their personal data.
+        </span>
+      </p>
+      <p class="text-base mt-4 text-zinc-500 max-w-2xl sm:mx-auto">
+        Transform your ordinary images into extraordinary masterpieces
+        effortlessly. Witness the magic unfold as your images evolve into
+        captivating and unforgettable works
+      </p>
+    </div>
+    <div
+      class="grid gap-4 mt-12 lg:mt-24 sm:grid-cols-2 md:grid-cols-3 lg:gap-3">
+      {
+        images.map((image) => (
+          <div
+            class={`mt-12 h-full space-y-3 ${image.visibility === "always" ? "" : image.visibility === "sm" ? "hidden sm:block" : "hidden md:block"}`}>
+            <img
+              alt={image.alt}
+              class="w-full"
+              src={image.src}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,99 @@
+{
+    "commitTypes": [
+        {
+            "description": "A new feature",
+            "emoji": "✨",
+            "value": "feat"
+        },
+        {
+            "description": "A bug fix",
+            "emoji": "🐛",
+            "value": "fix"
+        },
+        {
+            "description": "Documentation only changes",
+            "emoji": "📝",
+            "value": "docs"
+        },
+        {
+            "description": "Changes that do not affect the meaning of the code",
+            "emoji": "💄",
+            "value": "style"
+        },
+        {
+            "description": "A code change that neither fixes a bug nor adds a feature",
+            "emoji": "♻️",
+            "value": "refactor"
+        },
+        {
+            "description": "A code change that improves performance",
+            "emoji": "⚡️",
+            "value": "perf"
+        },
+        {
+            "description": "Adding missing tests or correcting existing tests",
+            "emoji": "✅",
+            "value": "test"
+        },
+        {
+            "description": "Changes to the build process or auxiliary tools",
+            "emoji": "🔧",
+            "value": "chore"
+        },
+        {
+            "description": "Changes to CI configuration files and scripts",
+            "emoji": "👷",
+            "value": "ci"
+        },
+        {
+            "description": "Reverts a previous commit",
+            "emoji": "⏪",
+            "value": "revert"
+        }
+    ],
+    "commitScopes": [
+        {
+            "description": "Changes related to ERP application",
+            "value": "erp"
+        },
+        {
+            "description": "Changes related to UI components",
+            "value": "ui"
+        },
+        {
+            "description": "Changes related to utilities",
+            "value": "utils"
+        },
+        {
+            "description": "Changes related to analytics",
+            "value": "analytics"
+        },
+        {
+            "description": "Changes related to logging",
+            "value": "logger"
+        },
+        {
+            "description": "Changes related to environment",
+            "value": "env"
+        },
+        {
+            "description": "Changes related to key-value store",
+            "value": "kv"
+        },
+        {
+            "description": "Changes related to dependencies",
+            "value": "deps"
+        },
+        {
+            "description": "Changes related to core functionality",
+            "value": "core"
+        }
+    ],
+    "ticketPrefix": "RAC",
+    "ticketRegex": "^RAC-\\d+$",
+    "allowEmptyTicket": true,
+    "allowNonJiraTicket": true,
+    "breakingChangeEmoji": "💥",
+    "closedIssueEmoji": "✨",
+    "issueNumberPrefix": "#"
+}

@@ -1,0 +1,30 @@
+{
+    "name": "@repo/utils",
+    "version": "1.0.0",
+    "main": "src/index.ts",
+    "private": true,
+    "sideEffects": false,
+    "scripts": {
+        "clean": "rm -rf .turbo node_modules",
+        "lint": "biome check .",
+        "format": "biome --write .",
+        "typecheck": "tsc --noEmit",
+        "test": "jest",
+        "test:watch": "jest --watch"
+    },
+    "devDependencies": {
+        "typescript": "^5.5.4",
+        "jest": "^29.0.0",
+        "@types/jest": "^29.0.0",
+        "ts-jest": "^29.0.0"
+    },
+    "exports": {
+        ".": "./src/index.ts",
+        "./envs": "./src/envs.ts",
+        "./format": "./src/format.ts",
+        "./delimiter": "./src/delimiter.ts"
+    },
+    "dependencies": {
+        "date-fns": "catalog:"
+    }
+}

@@ -1,0 +1,53 @@
+---
+import "../styles/global.css";
+import Metas from "./seo/Metas.astro";
+import Favicons from "./seo/Favicons.astro";
+const {
+  title = "Tempat Teduh",
+  description = "#",
+  url,
+  socialImage = "/social-preview-image.png",
+  twitterImage = "/twitter-preview-image.png", // Assuming you have a separate image for Twitter
+  author = "Raizora Indonesia",
+} = Astro.props;
+const sanitizedTitle = title.toLowerCase().replaceAll(" ", "-");
+---
+
+<Metas
+  title={title}
+  description={description.substring(0, 100)}
+  url={Astro.site
+    ? `${Astro.site}/${sanitizedTitle}`
+    : `https://raizora.com/${sanitizedTitle}`}
+  image={socialImage}
+  author={author}
+  twitterImage={twitterImage}
+/>
+<Favicons />
+<!-- HTML in your document's head -->
+<link
+  rel="preconnect"
+  href="https://rsms.me/"
+/>
+<link
+  rel="stylesheet"
+  href="https://rsms.me/inter/inter.css"
+/>
+
+
+<link
+  href="https://api.fontshare.com/v2/css?f[]=jet-brains-mono@1,2&display=swap"
+  rel="stylesheet"
+/>
+<script
+  defer
+  src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+></script>
+<link
+  href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/aos@next/dist/aos.css"
+/>

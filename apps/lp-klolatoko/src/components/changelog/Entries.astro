@@ -1,0 +1,25 @@
+---
+const { page, description,  pubDate, url } = Astro.props;
+---
+
+<div class="grid grid-cols-1 gap-4 pt-4 lg:grid-cols-3 lg:pt-12">
+  <div class="flex flex-col flex-shrink-0 mb-6 lg:pr-12 md:mb-0">
+    <p class="text-sm text-zinc-500">{pubDate}</p>
+  </div>
+  <div class="lg:col-span-2 space-y-4">
+    <span class="font-display text-xl leading-7 tracking-tight text-black">
+      {page}</span
+    >
+    <p class="text-base text-zinc-500 mt-4">
+      {description}
+    </p>
+    <div class="mt-8">
+      <a
+        href={url}
+        title={page}
+        class="text-black hover:text-accent-500 duration-200">
+        Read more about {page} &rarr;
+      </a>
+    </div>
+  </div>
+</div>

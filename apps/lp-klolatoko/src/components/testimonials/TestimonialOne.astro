@@ -1,0 +1,93 @@
+---
+const testimonials = [
+  {
+    stars: 3, // Number of filled stars
+    text: "I've always been concerned about privacy online, but since using this platform, I feel more empowered and in control of my personal data.",
+    author: "Michael A",
+    brandLogo: "/assets/brands/Attentive.svg",
+  },
+  {
+    stars: 5,
+    text: "As a professional working with sensitive information, I needed a communication solution that prioritizes security",
+    author: "John D",
+    brandLogo: "/assets/brands/Coinbase.svg",
+  },
+  {
+    stars: 4,
+    text: "As a digital nomad, maintaining my privacy while communicating is crucial. This platform has become my go-to choice for secure messaging.",
+    author: "Emily R",
+    brandLogo: "/assets/brands/Figma.svg",
+  },
+];
+---
+
+<section>
+  <div class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-12 lg:py-32">
+    <div>
+      <p class="text-3xl font-normal text-black font-display">
+        Discover the experiences and <span class="sm:block"
+          >feedback from satisfied customers</span
+        >
+      </p>
+    </div>
+    <ul
+      class="mt-12 lg:mt-24 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {
+        testimonials.map((testimonial) => (
+          <li>
+            <div class="rounded-2xl bg-chalk border p-8 h-full flex flex-col justify-between border-zinc-200">
+              <div>
+                <div class="flex gap-x-1">
+                  {/* Render filled stars */}
+                  {[...Array(testimonial.stars)].map(() => (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="icon icon-tabler icon-tabler-star fill-accent-500 stroke-accent-500"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="none"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                    </svg>
+                  ))}
+                  {/* Render empty stars */}
+                  {[...Array(5 - testimonial.stars)].map(() => (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="icon icon-tabler icon-tabler-star stroke-accent-500"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="none"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                    </svg>
+                  ))}
+                </div>
+                <p class="lg:text-sm text-zinc-500 mt-4">{testimonial.text}</p>
+              </div>
+              <footer class="mt-8">
+                <p class="lg:text-sm text-accent-500 font-display">
+                  {testimonial.author}
+                </p>
+                <img class="h-8 mt-4" src={testimonial.brandLogo} alt="" />
+              </footer>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

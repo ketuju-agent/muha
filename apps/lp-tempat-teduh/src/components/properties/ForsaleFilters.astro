@@ -1,0 +1,293 @@
+<div x-data="{ expanded: false }">
+  <div
+    class="relative"
+    :class="expanded ? 'before:-inset-2 before:top-0' : 'before:inset-0'">
+    <div class="relative">
+      <div class="flex items-center justify-between w-full bg-gray-100 px-4">
+        <div class="flex gap-3 divide-x divide-gray-300">
+          <p class="text-sm text-black">Filters</p>
+          <button
+            type="button"
+            class="text-gray-500 pl-3 text-sm"
+            @click="clearAllFilters"
+            >Clear all</button
+          >
+        </div>
+        <div>
+          <button
+            id="menubutton"
+            type="button"
+            class="grow flex items-center h-14 focus-visible:outline-none group"
+            @click="expanded = !expanded"
+            :aria-expanded="expanded"
+            aria-controls="menu">
+            <div
+              class="p-1.5 group-focus-visible:ring group-focus-visible:ring-indigo-300">
+              <svg
+                class="fill-gray-400 shrink-0 transition size-5 duration-300 ease-in-out"
+                :class="{'rotate-[90deg] ': expanded}"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
+                <path
+                  stroke="none"
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                ></path>
+                <path d="M12 5l0 14"></path><path
+                  :class="{'opacity-0': expanded}"
+                  d="M5 12l14 0"
+                ></path></svg
+              >
+            </div>
+          </button>
+        </div>
+      </div>
+      <nav
+        id="menu"
+        role="navigation"
+        aria-labelledby="menubutton"
+        class="grid text-sm text-gray-600  overflow-hidden transition-all duration-500 ease-[cubic-bezier(.5,.85,.25,1.8)] [&[x-cloak]]:hidden py-8"
+        :class="expanded ? 'grid-rows-[1fr] opacity-100 block border-b' : 'grid-rows-[0fr] opacity-0 hidden'"
+        x-cloak>
+        <div class="overflow-hidden">
+          <div class="grid grid-cols-2 gap-8 md:grid-cols-4 justify-between">
+            <!-- Location Filter -->
+            <div>
+              <fieldset>
+                <legend class="block text-base font-medium text-black"
+                  >Location</legend
+                >
+                <div class="mt-2">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="location-downtown"
+                      name="location"
+                      value="downtown"
+                      class="size-4 text-black focus:ring-black border-gray-200"
+                    />
+                    <label
+                      for="location-downtown"
+                      class="ml-2 text-sm text-gray-500"
+                      >Downtown</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="location-suburb"
+                      name="location"
+                      value="suburb"
+                      class="size-4 text-black focus:ring-black border-gray-200"
+                    />
+                    <label
+                      for="location-suburb"
+                      class="ml-2 text-sm text-gray-500"
+                      >Suburb</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="location-beachfront"
+                      name="location"
+                      value="beachfront"
+                      class="size-4 text-black focus:ring-black border-gray-200"
+                    />
+                    <label
+                      for="location-beachfront"
+                      class="ml-2 text-sm text-gray-500"
+                      >Beachfront</label
+                    >
+                  </div>
+                  <!-- Add more location checkboxes here -->
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- Property Type Filter -->
+            <div>
+              <fieldset>
+                <legend class="block text-base font-medium text-black"
+                  >Property Type</legend
+                >
+                <div class="mt-2">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="single-family"
+                      name="property-type"
+                      value="single-family"
+                      class="size-4 text-black focus:ring-black border-gray-200"
+                    />
+                    <label
+                      for="single-family"
+                      class="ml-2 text-sm text-gray-500"
+                      >Single Family</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="condo"
+                      name="property-type"
+                      value="condo"
+                      class="size-4 text-black focus:ring-black border-gray-200"
+                    />
+                    <label
+                      for="condo"
+                      class="ml-2 text-sm text-gray-500"
+                      >Condo</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="townhouse"
+                      name="property-type"
+                      value="townhouse"
+                      class="size-4 text-black focus:ring-black border-gray-200"
+                    />
+                    <label
+                      for="townhouse"
+                      class="ml-2 text-sm text-gray-500"
+                      >Townhouse</label
+                    >
+                  </div>
+                  <!-- Add more property type checkboxes here -->
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div>
+              <fieldset>
+                <legend class="block text-base font-medium text-black"
+                  >Price Range</legend
+                >
+                <div class="mt-2">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="price-under-100k"
+                      name="price-range"
+                      value="under-100k"
+                      class="size-4 text-black focus:ring-black border-gray-200"
+                    />
+                    <label
+                      for="price-under-100k"
+                      class="ml-2 text-sm text-gray-500"
+                      >Under $100k</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="price-100k-200k"
+                      name="price-range"
+                      value="100k-200k"
+                      class="size-4 text-black focus:ring-black border-gray-200"
+                    />
+                    <label
+                      for="price-100k-200k"
+                      class="ml-2 text-sm text-gray-500"
+                      >$100k - $200k</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="price-200k-300k"
+                      name="price-range"
+                      value="200k-300k"
+                      class="size-4 text-black focus:ring-black border-gray-200"
+                    />
+                    <label
+                      for="price-200k-300k"
+                      class="ml-2 text-sm text-gray-500"
+                      >$200k - $300k</label
+                    >
+                  </div>
+                  <!-- Add more price range checkboxes here -->
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- Bedrooms Filter -->
+            <div>
+              <fieldset>
+                <legend class="block text-base font-medium text-black"
+                  >Bedrooms</legend
+                >
+                <div class="mt-2">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="bedroom1"
+                      name="bedrooms"
+                      value="1"
+                      class="size-4 text-black focus:ring-black border-gray-200"
+                    />
+                    <label
+                      for="bedroom1"
+                      class="ml-2 text-sm text-gray-500"
+                      >1 Bedroom</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="bedroom2"
+                      name="bedrooms"
+                      value="2"
+                      class="size-4 text-black focus:ring-black border-gray-200"
+                    />
+                    <label
+                      for="bedroom2"
+                      class="ml-2 text-sm text-gray-500"
+                      >2 Bedrooms</label
+                    >
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="bedroom3"
+                      name="bedrooms"
+                      value="3"
+                      class="size-4 text-black focus:ring-black border-gray-200"
+                    />
+                    <label
+                      for="bedroom3"
+                      class="ml-2 text-sm text-gray-500"
+                      >3 Bedrooms</label
+                    >
+                  </div>
+                  <!-- Add more bedroom checkboxes here -->
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="items-center w-full flex">
+  <input
+    type="text"
+    placeholder="Country, City, Addres, Postal Code or ID"
+    class="h-14 border-0 border-b border-gray-200 text-black ring-transparent focus:ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm block w-full appearance-none"
+  />
+  <button
+    type="submit"
+    class="relative group overflow-hidden px-12 h-14 bg-black text-white w-auto hover:bg-gray-100 hover:text-black duration-300">
+    Search
+  </button>
+</div>

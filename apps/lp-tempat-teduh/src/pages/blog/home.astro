@@ -1,0 +1,59 @@
+---
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("posts");
+import EntriesOne from "@/components/blog/EntriesOne.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Subscribe from "@/components/ctas/Subscribe.astro";
+---
+
+<BaseLayout>
+  <section class="overflow-hidden">
+    <div class="px-8 pb-12 lg:pt-32">
+      <h1
+        data-aos="fade-up"
+        data-aos-duration="1500"
+        class="text-balance text-3xl md:text-5xl lg:text-4xl text-black"
+      >
+        News
+      </h1>
+      <div class="grid lg:grid-cols-3 pt-8 mt-40 border-t border-gray-200">
+        <div
+          class="lg:col-span-2 lg:col-start-2"
+          data-aos="fade-up"
+          data-aos-duration="2000"
+        >
+          <div class="text-3xl font-light text-black lg:text-pretty">
+            Welcome to our magazine.
+          </div>
+          <div class="mt-6 text-pretty text-gray-500 2xl:text-lg">
+            On our blog you will discover our newest listings, articles, deco
+            inspirations, lifestyle tips and more.
+          </div>
+        </div>
+        <div
+          data-aos="fade-up"
+          data-aos-duration="2500"
+          class="col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
+        >
+          {
+            allPosts
+              .slice()
+              .map((post) => (
+                <EntriesOne
+                  url={"/blog/posts/" + post.slug}
+                  title={post.data.title}
+                  description={post.data.description}
+                  alt={post.data.title}
+                  pubDate={post.data.pubDate.toString().slice(0, 10)}
+                  author={post.data.author}
+                  image={post.data.image.url}
+                  avatar={post.data.avatar.url}
+                />
+              ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  <Subscribe />
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+const { title, url, description, pubDate, image, avatar, author } = Astro.props;
+---
+
+<a href={url} title={title} class="text-xs 2xl:text-sm duration-300">
+  <div class="overflow-hidden group">
+    <img
+      src={image}
+      alt={title}
+      class="aspect-[4/3] object-cover object-center group-hover:scale-110 transition-transform duration-500"
+    />
+  </div>
+
+  <div class="w-full divide-y divide-gray-200">
+    <div class="flex items-center gap-3">
+      <img
+        class="inline-block size-9 object-cover rounded-full"
+        src={avatar}
+        alt={author}
+      />
+      <div class="gap-4 py-4">
+        <p class="text-black">{pubDate}</p>
+        <p class="text-gray-500">{author}</p>
+      </div>
+    </div>
+    <div class="gap-4 py-4">
+      <p class="text-black text-2xl">
+        {title}
+      </p>
+      <p class="text-gray-500 text-base mt-4">{description}</p>
+    </div>
+  </div>
+</a>

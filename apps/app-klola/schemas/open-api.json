@@ -1,0 +1,462 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "API Documentation",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api-dev.example.com",
+            "description": "Development server"
+        },
+        {
+            "url": "https://api-staging.example.com",
+            "description": "Staging server"
+        },
+        {
+            "url": "https://api.example.com",
+            "description": "Production server"
+        }
+    ],
+    "paths": {
+        "/auth/token": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get token",
+                "description": "Get token",
+                "operationId": "authToken",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/TokenRequest",
+                    "required": true
+                },
+                "parameters": [
+                    {
+                        "name": "x-device-id",
+                        "$ref": "#/components/headers/DeviceIdHeader",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/TokenResponseSuccess"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    }
+                }
+            }
+        },
+        "/auth/employee/token": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get employee token",
+                "description": "Get token to access the app",
+                "operationId": "authEmployeeToken",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/TokenRequest"
+                },
+                "parameters": [
+                    {
+                        "name": "x-device-id",
+                        "$ref": "#/components/headers/DeviceIdHeader",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "x-org-id",
+                        "$ref": "#/components/headers/OrganizationIdHeader",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "x-store-id",
+                        "$ref": "#/components/headers/StoreIdHeader",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/TokenResponseSuccess"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    }
+                }
+            }
+        },
+        "/organization": {
+            "get": {
+                "tags": [
+                    "Organization"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": [
+                            "auth/token"
+                        ]
+                    }
+                ],
+                "summary": "Get organization",
+                "description": "Get organization",
+                "operationId": "getOrganization",
+                "parameters": [
+                    {
+                        "name": "x-device-id",
+                        "$ref": "#/components/headers/DeviceIdHeader",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "name": "page",
+                        "$ref": "#/components/requestBodies/PageNumberRequest",
+                        "in": "query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/OrganizationResponseSuccess"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Organization"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": [
+                            "auth/token"
+                        ]
+                    }
+                ],
+                "summary": "Create organization",
+                "description": "Create organization",
+                "operationId": "createOrganization",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/CreateOrganizationRequest",
+                    "required": true
+                },
+                "parameters": [
+                    {
+                        "name": "x-device-id",
+                        "$ref": "#/components/headers/DeviceIdHeader",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/OrganizationResponseSuccess"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "headers": {
+            "DeviceIdHeader": {
+                "$ref": "#/components/schemas/DeviceIDSchema"
+            },
+            "OrganizationIdHeader": {
+                "$ref": "#/components/schemas/OrganizationIDSchema"
+            },
+            "StoreIdHeader": {
+                "$ref": "#/components/schemas/StoreIDSchema"
+            }
+        },
+        "requestBodies": {
+            "TokenRequest": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/TokenRequestSchema"
+                        }
+                    }
+                }
+            },
+            "PageNumberRequest": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/PageNumberSchema"
+                        }
+                    }
+                }
+            },
+            "CreateOrganizationRequest": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/CreateOrganizationRequestSchema"
+                        }
+                    }
+                }
+            },
+            "CreateStoreRequest": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/CreateStoreRequestSchema"
+                        }
+                    }
+                }
+            }
+        },
+        "responses": {
+            "TokenResponseSuccess": {
+                "description": "Token response success",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/TokenResponseSchema"
+                        }
+                    }
+                }
+            },
+            "CreateOrganizationSuccess": {
+                "description": "Create organization success",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/TokenResponseSchema"
+                        }
+                    }
+                }
+            },
+            "OrganizationResponseSuccess": {
+                "description": "Organization response success",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/OrganizationSchema"
+                        }
+                    }
+                }
+            },
+            "400": {
+                "description": "Bad request",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponseSchema"
+                        }
+                    }
+                }
+            },
+            "401": {
+                "description": "Unauthorized",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponseSchema"
+                        }
+                    }
+                }
+            },
+            "403": {
+                "description": "Forbidden",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponseSchema"
+                        }
+                    }
+                }
+            },
+            "404": {
+                "description": "Not found",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponseSchema"
+                        }
+                    }
+                }
+            },
+            "500": {
+                "description": "Internal server error",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponseSchema"
+                        }
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        },
+        "schemas": {
+            "PageNumberSchema": {
+                "type": "number",
+                "properties": {
+                    "page": {
+                        "type": "number"
+                    }
+                }
+            },
+            "DeviceIDSchema": {
+                "type": "string",
+                "description": "Device ID",
+                "properties": {
+                    "x-device-id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "OrganizationIDSchema": {
+                "type": "string",
+                "description": "Organization ID",
+                "properties": {
+                    "x-org-id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "StoreIDSchema": {
+                "type": "string",
+                "description": "Store ID",
+                "properties": {
+                    "x-store-id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "TokenRequestSchema": {
+                "type": "object",
+                "properties": {
+                    "phone": {
+                        "type": "string",
+                        "format": "phone"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "TokenResponseSchema": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CreateOrganizationRequestSchema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "number",
+                        "format": "phone"
+                    },
+                    "nib": {
+                        "type": "string"
+                    },
+                    "npwp": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CreateStoreRequestSchema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "lat": {
+                        "type": "number"
+                    },
+                    "lng": {
+                        "type": "number"
+                    },
+                    "phone": {
+                        "type": "number"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ErrorResponseSchema": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "OrganizationSchema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "number",
+                        "format": "phone"
+                    },
+                    "nib": {
+                        "type": "string"
+                    },
+                    "npwp": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

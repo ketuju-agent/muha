@@ -1,0 +1,53 @@
+---
+const brandImages = [
+  {
+    src: "/assets/brands/Attentive.svg",
+    alt: "Attentive Logo",
+    width: "158",
+    height: "48",
+  },
+  {
+    src: "/assets/brands/Figma.svg",
+    alt: "Figma Logo",
+    width: "158",
+    height: "48",
+  },
+  {
+    src: "/assets/brands/Coinbase.svg",
+    alt: "Coinbase Logo",
+    width: "158",
+    height: "48",
+  },
+  {
+    src: "/assets/brands/Zoom.svg",
+    alt: "Zoom Logo",
+    width: "158",
+    height: "48",
+  },
+  {
+    src: "/assets/brands/Afterpay.svg",
+    alt: "Afterpay Logo",
+    width: "158",
+    height: "48",
+  },
+];
+---
+
+<section>
+  <div class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-6">
+    <div
+      class="mx-auto mt-12 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+      {
+        brandImages.map((image, index) => (
+          <img
+            class={`col-span-2 max-h-12 w-full object-contain ${index === 3 ? "sm:col-start-2" : ""} ${index === 4 ? "col-start-2 sm:col-start-auto" : ""} lg:col-span-1`}
+            src={image.src}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
