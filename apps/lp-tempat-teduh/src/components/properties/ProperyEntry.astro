@@ -1,0 +1,47 @@
+---
+const { projectName, url, address, image, details, price } = Astro.props;
+---
+
+<a
+  href={url}
+  title={projectName}
+  class="text-xs 2xl:text-sm duration-300 hover:!opacity-100"
+>
+  <div class="relative overflow-hidden">
+    <img
+      src={image}
+      alt={projectName}
+      class="aspect-[4/3] object-cover object-center relative group-hover:scale-110 transition-transform duration-500"
+    />
+    <div class="bg-white absolute bottom-0 right-0 p-4 w-auto">
+      More information
+    </div>
+  </div>
+
+  <dl class="w-full divide-y border-b border-gray-200 divide-gray-200">
+    <div class="gap-4 py-4">
+      <dt class="text-black text-2xl">Project</dt>
+      <dd class="text-gray-500 text-base">{projectName}</dd>
+    </div>
+    <div class="gap-4 py-4">
+      <dt class="text-black">Address</dt>
+      <dd class="text-gray-500">{address}</dd>
+    </div>
+    <div class="gap-4 py-4 grid grid-cols-2 md:grid-cols-4 justify-between">
+      {
+        details.map((detail) => (
+          <>
+            <div>
+              <dt class="text-black">{detail.key}</dt>
+              <dd class="text-gray-500"> {detail.value}</dd>
+            </div>
+          </>
+        ))
+      }
+    </div>
+    <div class="gap-4 py-4">
+      <dt class="text-black">Price</dt>
+      <dd class="text-gray-500">{price}</dd>
+    </div>
+  </dl>
+</a>

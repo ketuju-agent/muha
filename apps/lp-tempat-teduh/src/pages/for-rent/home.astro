@@ -1,0 +1,44 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+const forRent = await getCollection("rent");
+import ProperyEntry from "@/components/properties/ProperyEntry.astro";
+import ForrentFilters from "@/components/properties/ForrentFilters.astro";
+---
+
+<BaseLayout>
+  <section class="overflow-hidden">
+    <div class="px-8 pb-12 lg:pt-32">
+      <div class="grid lg:grid-cols-3 gap-8 items-end">
+        <h1
+          class="text-balance lg:col-span-2 text-3xl md:text-5xl       lg:text-3xl font-light text-black">
+          Available properties, from cozy apartments to spacious estates, and
+          unit to rent.
+        </h1>
+        <p class="text-pretty text-gray-500 2xl:text-lg">
+          Browse our diverse selection of homes, from cozy apartments to
+          spacious estates, and discover the ideal property to call your own.
+        </p>
+      </div>
+      <div class=" mt-8">
+        <ForrentFilters />
+      </div>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 [&:hover>a]:opacity-30 duration-500">
+        {
+          forRent.slice().map((post) => (
+            <ProperyEntry
+              url={"/for-rent/" + post.slug}
+              projectName={post.data.projectName}
+              address={post.data.address}
+              price={post.data.price}
+              alt={post.data.projectName}
+              image={post.data.image.url}
+              details={post.data.details}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

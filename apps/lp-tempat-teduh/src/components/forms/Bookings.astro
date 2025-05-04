@@ -1,0 +1,259 @@
+---
+const time = [
+  {
+    value: "10:00 AM",
+    label: "10:00 AM",
+  },
+  {
+    value: "10:30 AM",
+    label: "10:30 AM",
+  },
+  {
+    value: "11:00 AM",
+    label: "11:00 AM",
+  },
+  {
+    value: "11:30 AM",
+    label: "11:30 AM",
+  },
+  {
+    value: "12:00 PM",
+    label: "12:00 PM",
+  },
+  {
+    value: "12:30 PM",
+    label: "12:30 PM",
+  },
+  {
+    value: "1:00 PM",
+    label: "1:00 PM",
+  },
+  {
+    value: "1:30 PM",
+    label: "1:30 PM",
+  },
+  {
+    value: "2:00 PM",
+    label: "2:00 PM",
+  },
+  {
+    value: "2:30 PM",
+    label: "2:30 PM",
+  },
+];
+
+const may = [
+  { day: 1, dayOfWeek: "S" },
+  { day: 2, dayOfWeek: "M" },
+  { day: 3, dayOfWeek: "T" },
+  { day: 4, dayOfWeek: "W" },
+  { day: 5, dayOfWeek: "T" },
+  { day: 6, dayOfWeek: "F" },
+  { day: 7, dayOfWeek: "S" },
+  { day: 8, dayOfWeek: "S" },
+  { day: 9, dayOfWeek: "M" },
+  { day: 10, dayOfWeek: "T" },
+  { day: 11, dayOfWeek: "W" },
+  { day: 12, dayOfWeek: "T" },
+  { day: 13, dayOfWeek: "F" },
+  { day: 14, dayOfWeek: "S" },
+  { day: 15, dayOfWeek: "S" },
+  { day: 16, dayOfWeek: "M" },
+  { day: 17, dayOfWeek: "T" },
+  { day: 18, dayOfWeek: "W" },
+  { day: 19, dayOfWeek: "T" },
+  { day: 20, dayOfWeek: "F" },
+  { day: 21, dayOfWeek: "S" },
+  { day: 22, dayOfWeek: "S" },
+  { day: 23, dayOfWeek: "M" },
+  { day: 24, dayOfWeek: "T" },
+  { day: 25, dayOfWeek: "W" },
+  { day: 26, dayOfWeek: "T" },
+  { day: 27, dayOfWeek: "F" },
+  { day: 28, dayOfWeek: "S" },
+  { day: 29, dayOfWeek: "S" },
+  { day: 30, dayOfWeek: "M" },
+  { day: 31, dayOfWeek: "T" },
+];
+---
+
+<section class="overflow-hidden">
+  <div class="px-8 pb-12 lg:pt-32">
+    <h1
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      class="text-balance text-3xl md:text-5xl lg:text-4xl text-black"
+    >
+      Bookings a visit
+    </h1>
+    <div class="grid lg:grid-cols-3 pt-8 mt-40 border-t border-gray-200">
+      <div
+        class="lg:col-span-2 lg:col-start-2"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
+        <div class="text-3xl font-light text-black lg:text-pretty">
+          Check out our availability and book the date and time that works for
+          you
+        </div>
+        <div class="mt-6 text-pretty text-gray-500 2xl:text-lg">
+          Fill up the form below to book your appointment with us. We will be in
+          touch with you shortly.
+        </div>
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-3 pt-8 mt-40 border-t gap-8 border-gray-200">
+      <div>
+        <div class="flex items-center gap-4">
+          <p class="text-lg text-black">May 2024</p>
+          <div class="flex items-center">
+            <button
+              type="button"
+              class="flex flex-none items-center p-1.5 text-gray-400 hover:text-black"
+            >
+              <span class="sr-only">Previous month</span>
+              <svg
+                class="size-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="flex flex-none items-center p-1.5 text-gray-400 hover:text-black"
+            >
+              <span class="sr-only">Next month</span>
+              <svg
+                class="size-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="mt-8 border-t border-gray-200 pt-8">
+          <div class="grid grid-cols-7 pt-2 text-xs leading-6 text-gray-500">
+            <div>S</div>
+            <div>M</div>
+            <div>T</div>
+            <div>W</div>
+            <div>T</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="mt-2 grid grid-cols-7 text-sm">
+            {
+              may.map((day) => (
+                <>
+                  <div class="py-2">
+                    <button
+                      type="button"
+                      class=" flex size-8 items-center  rounded-full text-gray-400 hover:bg-gray-200"
+                    >
+                      <time datetime={`2024-05-${day.day}`}>{day.day}</time>
+                    </button>
+                  </div>
+                </>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      <div>
+        <fieldset>
+          <legend class="text-lg text-black"
+            ><time datetime="Monday, May 13">Monday, May 13</time></legend
+          >
+          <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-2">
+            {
+              time.map((time) => (
+                <>
+                  <label class="relative flex justify-center cursor-pointer bg-white p-4 focus:outline-none">
+                    <input
+                      type="radio"
+                      name="project-type"
+                      value="Newsletter"
+                      class="sr-only"
+                      aria-labelledby={time.value}
+                      aria-describedby="project-type-0-description-0 project-type-0-description-1"
+                    />
+                    <time datetime={time.value}>{time.label}</time>
+
+                    <span
+                      class="pointer-events-none absolute -inset-px border"
+                      aria-hidden="true"
+                    />
+                  </label>
+                </>
+              ))
+            }
+          </div>
+        </fieldset>
+      </div>
+      <div>
+        <p class="text-lg text-black">Address</p>
+        <div
+          class="mt-8 space-y-1 text-sm text-pretty text-gray-500 2xl:text-lg"
+        >
+          <address class="space-y-1 not-italic">
+            <p>456 Birch Lane</p>
+            <p>Malmo, Sweden</p>
+          </address>
+          <p>60 min</p>
+          <p>$500.500</p>
+        </div>
+        <div class="mt-8">
+          <p class="text-lg text-black">Preferences</p>
+          <label
+            for="country-located"
+            class="block text-xl font-light text-black sr-only"
+            >Select your country</label
+          >
+          <div>
+            <select
+              name="country-located"
+              id="country-located"
+              class="block w-full h-12 border-0 py-1.5 border-b border-gray-200 text-black ring-transparent focus:ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm"
+            >
+              <option value="Select Concern Type">Agents</option>
+              <option value="United States">Serena Aandahl</option>
+              <option value="Canada">Marco Rossi</option>
+              <option value="Mexico">Sofia Lopez</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex w-full pt-8">
+          <a
+            href="/forms/contact"
+            type="submit"
+            class="relative group overflow-hidden px-12 h-16 bg-black text-white w-auto"
+          >
+            <div
+              aria-hidden="true"
+              class="transition duration-300 group-hover:-translate-y-16 w-full"
+            >
+              <div class="h-16 flex items-center justify-center">
+                <span>Add your details</span>
+              </div>
+              <div class="h-16 flex items-center justify-center">
+                <span>Add your details</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

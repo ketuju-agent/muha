@@ -1,0 +1,64 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+import Subscribe from "@/components/ctas/Subscribe.astro";
+---
+
+<BaseLayout>
+  <section class="overflow-hidden">
+    <div class="px-8 pb-12 lg:pt-32">
+      <h1
+        data-aos="fade-up"
+        data-aos-duration="1500"
+        class="text-balance text-3xl md:text-5xl lg:text-4xl text-black"
+      >
+        {frontmatter.title}
+      </h1>
+      <div class="grid lg:grid-cols-3 pt-8 mt-40 border-t border-gray-200">
+        <img
+          class="w-full h-[35vh] 2xl:h-[50vh] object-cover col-span-full"
+          src={frontmatter.image.url}
+          alt={frontmatter.image.url}
+        />
+        <div class="lg:col-span-2 lg:col-start-2 mt-8">
+          <h3 class="text-3xl font-light text-black lg:text-pretty">
+            {frontmatter.description}
+          </h3>
+          <div
+            class="flex items-center gap-3 mt-8 border-t border-gray-200 pt-8"
+          >
+            <img
+              class="inline-block size-9 object-cover rounded-full"
+              src={frontmatter.avatar.url}
+              alt={frontmatter.author.url}
+            />
+            <div class="gap-4 py-4">
+              <p class="text-black">
+                <time datetime={frontmatter.pubDate.toString().slice(0, 10)}>
+                  <span>{frontmatter.pubDate.toString().slice(0, 10)}</span>
+                </time>
+              </p>
+              <p class="text-gray-500">{frontmatter.author}</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            {
+              frontmatter.tags.map((tag) => (
+                <a
+                  title={tag}
+                  aria-label={tag}
+                  class="text-black hover:text-gray-500"
+                  href={`/blog/tags/${tag}`}
+                >
+                  {tag}
+                </a>
+              ))
+            }
+          </div>
+          <div class="prose-styles mt-8 border-t border-gray-200"><slot /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Subscribe />
+</BaseLayout>

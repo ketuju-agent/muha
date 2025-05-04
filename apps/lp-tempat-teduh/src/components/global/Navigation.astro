@@ -1,0 +1,211 @@
+---
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("posts");
+import EntriesNavigation from "@/components/blog/EntriesNavigation.astro";
+const whatweoffer = [
+  {
+    title: "Meet a local expert who can help your journey",
+    subtitle:
+      "Our network of local real estate professionals apply their local market knowledge to create a comprehensive and customized plan for your home. Find an agent who is closest you and learn their local expertise.",
+    link: { href: "/for-sale/home", text: "See all agents" },
+    image: {
+      url: "/images/agents/4.jpg",
+      alt: "#_",
+    },
+  },
+  {
+    title: "Access our local expertise and exceptional service",
+    subtitle:
+      "With experts in every part of the world, we are local everywhere, With innovative technology and unrivaled service, our local brokerage offices can elevate your property and your home selling experience.",
+    link: { href: "/forms/contact", text: "See your property" },
+    image: {
+      url: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "#_",
+    },
+  },
+];
+const navigation = [
+  {
+    link: { href: "/system/overview", text: "Overview" },
+  },
+  {
+    link: { href: "/system/style-guide", text: "Style guide" },
+  },
+  {
+    link: { href: "/for-sale/home", text: "Properties for sale" },
+  },
+  {
+    link: { href: "/for-rent/home", text: "Properties for rent" },
+  },
+  {
+    link: { href: "/forms/sell-property", text: "Sell your property " },
+  },
+  {
+    link: { href: "/agents/home", text: "Meet our agents " },
+  },
+  {
+    link: { href: "/forms/contact", text: "Contact us " },
+  },
+];
+---
+
+<section x-data="{ expanded: false }">
+  <div class="w-full max-w-screen mx-auto px-8 pt-6">
+    <div class="relative">
+      <div class="flex items-center justify-between w-full">
+        <a
+          class="text-xs lg:text-sm flex uppercase items-center gap-2 uppercasetext-gray-500 hover:text-black"
+          href="/"
+        >
+          <img class="size-3 lg:ml-auto" src="/images/logo.svg" alt="" />
+          Tempat Teduh
+        </a>
+        <div class="order-last">
+          <button
+            id="menubutton"
+            type="button"
+            class="grow flex items-center h-14 group"
+            @click="expanded = !expanded"
+            :aria-expanded="expanded"
+            aria-controls="menu"
+          >
+            <div
+              class="p-1.5 group-focus-visible:ring group-focus-visible:ring-indigo-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="fill-gray-400 size-8 shrink-0 transition duration-300 ease-in-out"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-menu"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path :class="{'opacity-0': expanded}" d="M4 8l16 0"></path>
+                <path d="M4 16l16 0"></path></svg
+              >
+            </div>
+          </button>
+        </div>
+        <div
+          class="flex gap-2 lg:gap-4 text-black uppercase text-xs lg:text-sm"
+        >
+        </div>
+      </div>
+      <nav
+        id="menu"
+        role="navigation"
+        aria-labelledby="menubutton"
+        class="grid text-sm text-gray-600 w-0 overflow-hidden ml-auto transition-all duration-500 ease-[cubic-bezier(.4,.0,.20,1)] [&[x-cloak]]:hidden border-b border-gray-200 mb-4"
+        :class="expanded ? 'grid-rows-[1fr] opacity-100 w-full' : 'grid-rows-[0fr] opacity-0 invisible'"
+        x-cloak
+      >
+        <div
+          :class="expanded ? 'border-t border-gray-200' : 'border-none'"
+          class="overflow-hidden"
+        >
+          <div
+            class="grid grid-cols-1 gap-8 lg:grid-cols-3 py-8 xl:divide-x xl:divide-gray-200"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="md:col-span-2">
+                <p class="text-xl text-black">Navigation</p>
+                <ul
+                  class="list-none text-gray-500 mt-4 text-base gap-1 list-inside grid grid-cols-1 md:grid-cols-2 lg:col-span-2"
+                >
+                  {
+                    navigation.map((navigation) => (
+                      <>
+                        <li>
+                          <a
+                            href={navigation.link.href}
+                            class="hover:text-black text-gray-500 mt-auto flex gap-3 items-center justify-between"
+                          >
+                            {navigation.link.text}
+                          </a>
+                        </li>
+                      </>
+                    ))
+                  }
+                </ul>
+              </div>
+              <div class="hidden xl:block xl:col-span-2 xl:pr-8">
+                <p class="text-xl text-black">From the blog</p>
+                <ul
+                  class="list-none text-gray-500 mt-4 text-base space-y-1 list-inside"
+                >
+                  {
+                    allPosts
+                      .slice(0, 1)
+                      .map((post) => (
+                        <EntriesNavigation
+                          url={"/blog/posts/" + post.slug}
+                          title={post.data.title}
+                          description={post.data.description}
+                          alt={post.data.title}
+                          pubDate={post.data.pubDate.toString().slice(0, 10)}
+                          author={post.data.author}
+                          image={post.data.image.url}
+                          avatar={post.data.avatar.url}
+                        />
+                      ))
+                  }
+                </ul>
+              </div>
+            </div>
+            <div
+              class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:col-span-2 xl:pl-8"
+            >
+              {
+                whatweoffer.map((whatweoffer) => (
+                  <>
+                    <div class="grid grid-cols-1 gap-8 2xl:grid-cols-2">
+                      <div class="flex flex-col h-full justify-between">
+                        <div>
+                          <p class="text-base 2xl:text-xl  text-black">
+                            {whatweoffer.title}
+                          </p>
+                          <p class="mt-6 text-pretty text-gray-500 text-sm">
+                            {whatweoffer.subtitle}
+                          </p>
+                        </div>
+                        <div class="mt-8">
+                          <a
+                            href={whatweoffer.link.href}
+                            class="text-black hover:text-gray-500 mt-auto flex gap-3 items-center justify-between"
+                          >
+                            {whatweoffer.link.text}
+                            <svg
+                              width="71"
+                              height="16"
+                              viewBox="0 0 71 15"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M0.996338 6.5C0.444053 6.5 -0.00366211 6.94772 -0.00366211 7.5C-0.00366211 8.05228 0.444053 8.5 0.996338 8.5V6.5ZM69.7739 8.20711C70.1645 7.81658 70.1645 7.18342 69.7739 6.79289L63.41 0.428932C63.0194 0.0384079 62.3863 0.0384079 61.9958 0.428932C61.6052 0.819456 61.6052 1.45262 61.9958 1.84315L67.6526 7.5L61.9958 13.1569C61.6052 13.5474 61.6052 14.1805 61.9958 14.5711C62.3863 14.9616 63.0194 14.9616 63.41 14.5711L69.7739 8.20711ZM0.996338 8.5H69.0668V6.5H0.996338V8.5Z"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                      <img
+                        class="aspect-[4/2] hidden xl:block 2xl:aspect-[4/7] group-hover:scale-110 transition-transform object-cover object-top duration-500"
+                        src={whatweoffer.image.url}
+                        alt={whatweoffer.image.alt}
+                      />
+                    </div>
+                  </>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</section>

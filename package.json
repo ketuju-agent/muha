@@ -1,0 +1,17 @@
+{
+  "name": "@raizora/wadah-frontend",
+  "private": true,
+  "scripts": {
+    "update-deps": "bunx npm-check-updates --configFileName .ncurc.json"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@moonrepo/cli": "^1.33.2",
+    "@t3-oss/env-nextjs": "^0.11.1",
+    "npm-check-updates": "^17.1.14"
+  },
+  "dependencies": {
+    "@svgr/webpack": "^8.1.0"
+  },
+  "packageManager": "bun@1.0.0"
+}

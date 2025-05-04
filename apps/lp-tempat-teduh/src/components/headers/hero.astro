@@ -1,0 +1,71 @@
+---
+const whyus = [
+  {
+    title: "Easy Financing",
+    subtitle:
+      "We offer hassle-free financing options tailored to your needs. Our flexible payment plans make it easy to get the services you need without breaking the bank.",
+  },
+  {
+    title: "Free Consultations",
+    subtitle:
+      "Schedule a free consultation in thxe comfort of your own home. Our experts will assess your needs and provide personalized recommendations tailored to your space and lifestyle.",
+  },
+  {
+    title: "Award Winning Service",
+    subtitle:
+      "Our commitment to excellence has earned us numerous awards and accolades in the industry. Rest assured, you're in good hands with our team of dedicated professionals.",
+  },
+  {
+    title: "Licensed & Insured",
+    subtitle:
+      "We are fully licensed and insured, giving you peace of mind knowing that your project is in compliance with all regulations and standards. Your safety and satisfaction are our top priorities.",
+  },
+];
+---
+
+<section class="overflow-hidden">
+  <div class="px-8 pb-12">
+    <div class="relative">
+      <img
+        class="w-full h-[60vh] 2xl:h-[75vh] object-cover relative"
+        src="https://images.unsplash.com/photo-1469964062538-06fad433a132?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt=""
+      />
+      <div
+        class="absolute bg-white bottom-0 right-0 p-8 w-full md:max-w-xs flex flex-col"
+      >
+        <p class="text-sm">Tempat Teduh</p>
+        <p>
+          <a class="text-xs" href="tel:+1-202-555-0123">Tel: (202) 555-0123</a>
+        </p>
+      </div>
+    </div>
+    <div class="mt-12">
+      <h1
+        class="text-balance text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl text-black"
+      >
+        <span class="lg:block"> Discover your dream home.</span> Explore our real
+        estate listings today
+      </h1>
+    </div>
+    <div class="grid lg:grid-cols-3 pt-8 mt-40 border-t border-gray-200">
+      <div class="text-3xl font-light text-black">Why choose us</div>
+      <div class="lg:col-span-2 grid lg:grid-cols-2 lg:col-start-2 gap-8">
+        {
+          whyus.map((whyus) => (
+            <>
+              <div class=" flex flex-col ">
+                <p class="text-3xl font-light text-black      ">
+                  {whyus.title}
+                </p>
+                <p class="mt-6 text-pretty text-gray-500 2xl:text-lg">
+                  {whyus.subtitle}
+                </p>
+              </div>
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

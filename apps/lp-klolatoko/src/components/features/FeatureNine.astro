@@ -1,0 +1,65 @@
+---
+const features = [
+  {
+    title: "End-to-end encryption",
+    description:
+      "Benefit from advanced cryptography that ensures your data remains inaccessible.",
+  },
+  {
+    title: "No trackers or ads",
+    description:
+      "Rest assured that your data is never traded, shared, or utilized.",
+  },
+  {
+    title: "Open-source and audited",
+    description:
+      "Brightlight operates on open-source principles, employing open-source.",
+  },
+  {
+    title: "User-controlled encryption",
+    description:
+      "Brightlight empowers users by allowing them to maintain control over their encryption keys.",
+  },
+];
+---
+
+<section>
+  <div class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-12 lg:py-32">
+    <div>
+      <p
+        class="text-4xl tracking-tight font-medium text-black md:text-5xl font-display">
+        Safeguard your workspace with essential
+        <span class=" text-accent-500">
+          applications for end-to-end encryption.
+        </span>
+      </p>
+    </div>
+
+    <ul
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-12 gap-8 list-none"
+      role="list">
+      {
+        features.map((feature) => (
+          <li>
+            <p class="font-display text-xl leading-7 tracking-tight text-black">
+              {feature.title}
+            </p>
+            <p class="text-sm text-zinc-500 mt-4">{feature.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="max-w-7xl mx-auto pb-12">
+      <div
+        class="relative items-center w-full mt-12 lg:mt-24 rounded-2xl bg-white overflow-hidden"
+        style="">
+        <img
+          class="w-full rounded-lg object-cover"
+          src="/assets/dashboardDouble.svg"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,108 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+  <section>
+    <div class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-12 lg:py-36">
+      <div class="max-w-3xl mx-auto">
+        <div>
+          <div class="flex flex-col md:flex-row gap-4">
+            <img
+              class="size-16 lg:size-32"
+              src={frontmatter.logo.url}
+              alt={frontmatter.logo.alt}
+            />
+            <div>
+              <h1
+                class="text-3xl font-normal tracking-tight text-black font-display text-balance"
+              >
+                {frontmatter.integration}
+              </h1>
+              <p class="text-base mt-4 text-zinc-500 text-balance">
+                {frontmatter.description}
+              </p>
+            </div>
+          </div>
+          <div class="mt-24 flex flex-col w-full max-w-xl">
+            <p
+              class="text-2xl font-normal tracking-tight text-black font-display text-balance"
+            >
+              Connect {frontmatter.integration} to Snowpeak
+            </p>
+            <div class="mt-12">
+              <p>{frontmatter.integration} would like to:</p>
+              <ul
+                class="mt-4 text-left space-y-2 text-zinc-500 text-base"
+                role="list"
+              >
+                {
+                  frontmatter.permissions.map((permission) => (
+                    <li class="flex items-center gap-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-circle-check-filled size-5"
+                        viewBox="0 0 24 24"
+                        stroke-width="1"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path
+                          d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                          stroke-width="0"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      {permission}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+          <div
+            class="flex flex-col lg:flex-row gap-1 items-center mt-6 pt-6 border-t w-full border-zinc-200"
+          >
+            <button
+              type="submit"
+              class="rounded-lg px-4 border py-2 text-sm font-semibold transition-all ml-auto flex items-center justify-center bg-chalk text-zinc-500 hover:text-accent-500 h-10 border-zinc-300"
+            >
+              Cancel</button
+            >
+            <button
+              type="submit"
+              class="rounded-lg px-4 py-2 text-sm font-semibold transition-all flex items-center justify-center text-white bg-gradient-to-b from-accent-500 to-accent-600 hover:to-accent-700 h-10"
+            >
+              Allow access</button
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="prose-styles space-y-12">
+        <h2>Company Details</h2>
+        <ul role="list">
+          {
+            frontmatter.details.map((detail) => (
+              <li>
+                <p>
+                  {detail.title} -
+                  {detail.url ? (
+                    <a href={detail.url}>{detail.value}</a>
+                  ) : (
+                    detail.value
+                  )}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+        <slot />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

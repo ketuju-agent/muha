@@ -1,0 +1,173 @@
+---
+const pricingPlans = [
+  {
+    name: "Hobby",
+    monthlyPrice: "15",
+    annualPrice: "8",
+    description:
+      "This plan is ideal for individual users and hobbyists who are looking for essential functionalities to support their projects.",
+    cardBgClass: "bg-chalk",
+    descriptionColor: "text-zinc-500",
+    buttonClass:
+      "border bg-chalk text-zinc-500 hover:text-accent-500  border-zinc-300",
+    features: ["5 mb/PDF", "75 pages/PDF", "10 messages/Day", "Up to 3 PDFs"],
+    unavailableFeatures: ["Gpt-3.5-turbo model", "Test mode", "Doc summary"],
+  },
+
+  {
+    name: "Pro",
+    monthlyPrice: "50",
+    annualPrice: "40",
+    description:
+      "Tailored for medium-sized businesses, this plan offers advanced tools and features to support your growing demands.",
+    cardBgClass: "bg-gradient-to-b from-accent-500 to-accent-600",
+    descriptionColor: "text-white",
+    buttonClass:
+      "text-white bg-gradient-to-b from-accent-500 to-accent-600 hover:to-accent-700",
+    features: [
+      "32 mb/PDF",
+      "1500 pages/PDF",
+      "1000 messages/Day",
+      "Up to 50 PDFs",
+      "Gpt-3.5-turbo-16k model",
+      "Test mode",
+      "Doc summary",
+    ],
+    unavailableFeatures: [],
+  },
+];
+---
+
+<section x-data="{annual: false}">
+  <div class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-12 lg:py-32">
+    <div class="max-w-3xl mx-auto space-y-2 lg:max-w-none">
+      <div>
+        <div
+          class="grid grid-cols-1 text-center lg:text-left lg:grid-cols-2 justify-between items-end"
+        >
+          <div class="w-full max-w-xl lg:mx-0 sm:mx-auto">
+            <h2
+              class="text-3xl font-normal tracking-tight text-black font-display"
+            >
+              Always know what you’ll pay,
+              <span class="sm:block text-accent-500">
+                transparent pricing for some.</span
+              >
+            </h2>
+            <p class="text-base sm:mx-auto lg:mx-0 mt-4 text-zinc-500">
+              Choose a plan that works the best for you and your team.
+            </p>
+          </div>
+          <div class="md:max-w-sm mx-auto lg:mx-0 lg:ml-auto">
+            <div
+              class="inline-flex w-full border rounded-lg mt-6 overflow-hidden bg-chalk p-0.5 z-0 border-zinc-200"
+            >
+              <button
+                class="text-black font-medium border rounded-md transition w-full py-2 block border-transparent px-8 text-xs"
+                @click="annual = false"
+                :class="annual == false ? 'bg-zinc-100 border text-black ' : ''"
+                type="button">Monthly</button
+              >
+              <button
+                class="text-black font-medium border rounded-md transition w-full py-2 block border-transparent px-8 text-xs"
+                @click="annual = true"
+                :class="annual == true ? 'bg-zinc-100 border text-black' : ''"
+                type="button">Annual</button
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="relative my-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-3 max-w-7xl lg:mx-auto"
+    >
+      {
+        pricingPlans.map((plan) => (
+          <section>
+            <div
+              class={` ${plan.cardBgClass}  flex flex-col  justify-between w-full  rounded-2xl border p-8 border-zinc-200`}
+            >
+              <div>
+                <div class="flex items-center justify-between">
+                  <p
+                    class={`text-4xl text-black font-display ${plan.descriptionColor}`}
+                  >
+                    {plan.name}
+                  </p>
+                  <p class={`${plan.descriptionColor}`}>
+                    <span class="text-4xl font-light font-display">
+                      <span x-show="!annual">${plan.monthlyPrice}</span>
+                      <span x-show="annual">${plan.annualPrice}</span>
+                    </span>
+                  </p>
+                </div>
+                <div class="space-y-4 mt-8">
+                  <span
+                    class={`text-base font-medium block ${plan.descriptionColor}`}
+                  >
+                    Monthly
+                    <span x-show="annual" style="display: none;">
+                      (billed annually)
+                    </span>
+                  </span>
+                  <p class={`text-sm text-pretty ${plan.descriptionColor}`}>
+                    {plan.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <ul class="grid md:grid-cols-2 gap-x-4 order-last mt-8 text-sm text-zinc-500 gap-y-3 px-8">
+              {plan.features.map((feature) => (
+                <li class="inline-flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-circle-check-filled size-5"
+                    viewBox="0 0 24 24"
+                    stroke-width="1"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                      stroke-width="0"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+              {plan.unavailableFeatures.map((feature) => (
+                <li class="inline-flex items-center gap-2 text-zinc-400 line-through">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="icon icon-tabler icons-tabler-filled size-5 icon-tabler-xbox-x"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10 -10 10s-10 -4.477 -10 -10s4.477 -10 10 -10m3.6 5.2a1 1 0 0 0 -1.4 .2l-2.2 2.933l-2.2 -2.933a1 1 0 1 0 -1.6 1.2l2.55 3.4l-2.55 3.4a1 1 0 1 0 1.6 1.2l2.2 -2.933l2.2 2.933a1 1 0 0 0 1.6 -1.2l-2.55 -3.4l2.55 -3.4a1 1 0 0 0 -.2 -1.4" />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <div class="flex mt-6">
+              <button
+                type="button"
+                title={plan.name}
+                aria-label="get started"
+                class={`rounded-lg px-4 py-2 text-sm font-semibold w-full transition-all flex items-center justify-center  h-10 ${plan.buttonClass}`}
+              >
+                Get started
+              </button>
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </div>
+</section>

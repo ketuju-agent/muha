@@ -1,0 +1,149 @@
+---
+const features = [
+  {
+    title: "End-to-end encryption",
+    description:
+      "Benefit from advanced cryptography that ensures your data remains inaccessible.",
+  },
+  {
+    title: "No trackers or ads",
+    description:
+      "Rest assured that your data is never traded, shared, or utilized.",
+  },
+  {
+    title: "Open-source and audited",
+    description:
+      "Brightlight operates on open-source principles, employing open-source.",
+  },
+];
+---
+
+<section>
+  <div class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-12 lg:py-32">
+    <div class="sm:text-center w-1/2 mx-auto">
+      <p class="text-3xl font-normal text-black font-display text-balance">
+        Empowering users with full
+        <span class="text-accent-500"> control over their personal data. </span>
+      </p>
+      <p class="text-base mt-4 text-zinc-500 max-w-2xl sm:mx-auto text-balance">
+        Transform your ordinary images into extraordinary masterpieces
+        effortlessly. Witness the magic unfold as your images evolve into
+        captivating and unforgettable works
+      </p>
+    </div>
+
+    <div class="gap-4 grid grid-cols-1 lg:grid-cols-2 mt-12 lg:mt-24">
+      <div
+        class="flex-1 flex flex-col justify-between overflow-hidden rounded-2xl bg-chalk border border-zinc-200"
+      >
+        <div>
+          <div
+            class="relative left-[-25%] w-[150%] font-medium leading-6 text-zinc-500"
+          >
+            <div
+              class="pointer-events-none absolute inset-0 bottom-[-3px] z-20"
+              style="background: radial-gradient(76.24% 66.44% at 50% 33.56%, rgba(255, 255, 255, 0.1) 0%, rgb(255, 255, 255) 100%);"
+            >
+            </div>
+            <div
+              class="flex gap-8 overflow-x-auto p-6 sm:p-12 max-w-[calc(100vw-6px)]"
+            >
+              <div class="mx-auto flex gap-2">
+                <div
+                  class="h-[264px] w-[448px] overflow-hidden translate-x-0 rounded-2xl border border-zinc-900/25 bg-white"
+                >
+                  <img
+                    alt="#"
+                    loading="lazy"
+                    src="/assets/dashboard.svg"
+                    style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+                  />
+                </div>
+                <div
+                  class="h-[264px] w-[448px] overflow-hidden translate-x-0 rounded-2xl border border-zinc-900/25 bg-white"
+                >
+                  <img
+                    alt="#"
+                    loading="lazy"
+                    src="/assets/dashboardBlue.svg"
+                    style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mx-6 mb-6 flex flex-col gap-2 sm:mx-8 sm:mb-8">
+          <div class="text-sm font-medium leading-6 text-accent-500">
+            Content
+          </div>
+          <div class="font-display text-xl leading-7 tracking-tight text-black">
+            Anonymized metadata
+          </div>
+          <div class="text-sm leading-6 text-zinc-500">
+            Brightlight goes beyond just encrypting the content of your
+            messages. It also anonymizes metadata, such as sender.
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex-1 flex flex-col justify-between overflow-hidden rounded-2xl bg-chalk border border-zinc-200"
+      >
+        <div>
+          <div
+            class="relative left-[-25%] w-[150%] font-medium leading-6 text-zinc-500"
+          >
+            <div
+              class="pointer-events-none absolute inset-0 bottom-[-3px] z-20"
+              style="background: radial-gradient(76.24% 66.44% at 50% 33.56%, rgba(255, 255, 255, 0.1) 0%, rgb(255, 255, 255) 100%);"
+            >
+            </div>
+            <div
+              class="flex gap-8 overflow-x-auto p-6 sm:p-12 max-w-[calc(100vw-6px)]"
+            >
+              <div class="mx-auto">
+                <div
+                  class="h-[264px] w-[448px] overflow-hidden translate-x-0 rounded-2xl border border-zinc-900/25 bg-white"
+                >
+                  <img
+                    alt="#"
+                    loading="lazy"
+                    src="/assets/dashboardBlack.svg"
+                    style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mx-6 mb-6 flex flex-col gap-2 sm:mx-8 sm:mb-8 relative">
+          <div class="text-sm font-medium leading-6 text-accent-500">(2FA)</div>
+          <div class="font-display text-xl leading-7 tracking-tight text-black">
+            Two-factor authentication
+          </div>
+          <div class="text-sm leading-6 text-zinc-500">
+            By enabling 2FA, users must provide a second form of verification,
+            such as a unique code sent to their mobile device.
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul
+      class="grid grid-cols-1 sm:grid-cols-2 text-center lg:grid-cols-3 gap-8 mt-6 list-none"
+      role="list"
+    >
+      {
+        features.map((feature, index) => (
+          <li>
+            <p class="font-display text-xl mt-4 leading-7 tracking-tight text-black">
+              {feature.title}
+            </p>
+            <p class="text-sm text-zinc-500 mt-4 text-balance">
+              {feature.description}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

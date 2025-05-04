@@ -1,0 +1,30 @@
+---
+const brandImages = [
+  { src: "/assets/brands/Attentive.svg", alt: "Attentive" },
+  { src: "/assets/brands/Afterpay.svg", alt: "Afterpay" },
+  { src: "/assets/brands/Coinbase.svg", alt: "Coinbase" },
+  { src: "/assets/brands/Figma.svg", alt: "Figma" },
+  { src: "/assets/brands/Zoom.svg", alt: "Zoom" },
+  { src: "/assets/brands/Sonos.svg", alt: "Sonos" },
+];
+---
+
+<section>
+  <div class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-12 lg:py-32">
+    <div class="-mx-6 grid grid-cols-2 gap-0.5 sm:mx-0 md:grid-cols-3">
+      {
+        brandImages.map((image) => (
+          <div class="bg-chalk p-6 sm:p-10 rounded-2xl border border-zinc-200">
+            <img
+              class="max-h-12 w-full object-contain"
+              src={image.src}
+              alt={image.alt}
+              width="158"
+              height="48"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

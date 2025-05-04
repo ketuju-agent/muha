@@ -1,0 +1,17 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import { Footer } from '@packages/ui/components/layouts/footers/footer-ketuju';
+import { Navigation } from '@packages/ui/components/layouts/headers/header-ketuju';
+import Config from "../../site.config.js";
+---
+
+<html
+  lang="en"
+  class="scroll-smooth selection:bg-accent-500 selection:text-white">
+  <head> <BaseHead /></head>
+  <body class="bg-white">
+    <Navigation client:visible/>
+    <slot />
+    <Footer productName={Config.title} description={Config.description} />
+  </body>
+</html>

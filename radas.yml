@@ -1,0 +1,230 @@
+# Last updated: 2025-05-02
+# Version: 1.0.0
+
+---
+# Repository metadata
+metadata:
+  name: "Web Frontend Monorepo"
+  description: "Central repository for all frontend applications and packages"
+  version: "1.0.0"
+  maintained_by: "Engineering Team"
+  documentation: "https://internal-docs.raizora.com/web-monorepo"
+
+# Repository type
+type: monorepo-frontend
+
+# Global configurations
+configs:
+  tooling:
+    linting:
+      - biome        # Modern JavaScript linter and formatter
+      - eslint       # JavaScript/TypeScript linter
+    formatting:
+      - editor-config  # Consistent editor configuration
+      - prettier       # Code formatter
+    git:
+      - git-hooks      # Pre-commit, pre-push hooks
+      - better-commit  # Commit message standardization
+      - commitlint     # Validate commit messages
+      - gitignore      # Standard gitignore patterns
+    dependency:
+      - ncu            # npm-check-updates for dependency management
+    building:
+      - flake-nix      # Nix package management for reproducible builds
+    documentation:
+      - changelog      # Automated changelog generation
+      - contributing   # Contribution guidelines
+    ide:
+      - cursorrule     # IDE-specific configurations
+
+# Package management
+package_manager:
+  name: "pnpm"
+  version: "^8.0.0"
+  workspaces: true
+
+# Applications
+apps:
+  # Landing Page Applications
+  lp-agency:
+    type: "landing-page"
+    description: "Agency landing page for product marketing"
+    owners: eng-team
+    stacks:
+      frontend:
+        framework: "astro"
+        styling: "tailwind"
+        ui: "react"
+    testing:
+      unit: true
+      component: true
+      integration: true
+      e2e: true
+    deployment:
+      production: "https://agency.raizora.com"
+      staging: "https://staging.agency.raizora.com"
+  
+  lp-klola:
+    type: "landing-page"
+    description: "Klola product landing page"
+    owners: eng-team
+    stacks:
+      frontend:
+        framework: "astro"
+        styling: "tailwind"
+        ui: "react"
+        version:
+          astro: "^4.0.0"
+          react: "^18.2.0"
+          tailwind: "^3.3.0"
+    testing:
+      unit: false
+      component: true
+      integration: true
+      e2e: false
+    deployment:
+      production: "https://klola.raizora.com"
+      staging: "https://staging.klola.raizora.com"
+  
+  # Full Applications
+  app-klola:
+    type: "application"
+    description: "Main Klola product application"
+    owners: prod-team
+    stacks:
+      frontend:
+        framework: "next"
+        styling: "tailwind"
+        ui: "react"
+    testing:
+      unit: true
+      component: true
+      integration: true
+      e2e: true
+    deployment:
+      production: "https://app.klola.raizora.com"
+      staging: "https://staging-app.klola.raizora.com"
+      development: "https://dev-app.klola.raizora.com"
+  
+  app-gea:
+    type: "application"
+    description: "Gea analytics dashboard"
+    owners: prod-team
+    stacks:
+      frontend:
+        framework: "next"
+        styling: "tailwind"
+        ui: "react"
+    testing:
+      unit: false
+      component: true
+      integration: true
+      e2e: true
+    deployment:
+      production: "https://gea.raizora.com"
+      staging: "https://staging.gea.raizora.com"
+  
+  lp-dihadiri:
+    type: "landing-page"
+    description: "Dihadiri product landing page"
+    owners: prod-team
+    stacks:
+      frontend:
+        framework: "next"
+        styling: "tailwind"
+        ui: "react"
+    testing:
+      unit: false
+      component: true
+      integration: false
+      e2e: false
+    deployment:
+      production: "https://dihadiri.raizora.com"
+  
+  lp-tempat-teduh:
+    type: "landing-page"
+    description: "Tempat Teduh product landing page"
+    owners: prod-team
+    stacks:
+      frontend:
+        framework: "next"
+        styling: "tailwind"
+        ui: "react"
+    testing:
+      unit: false
+      component: true
+      integration: false
+      e2e: false
+    deployment:
+      production: "https://tempat-teduh.raizora.com"
+  
+  lp-dokukita:
+    type: "landing-page"
+    description: "Dokukita product landing page"
+    owners: prod-team
+    stacks:
+      frontend:
+        framework: "astro"
+        styling: "tailwind"
+        ui: "react"
+    testing:
+      unit: false
+      component: true
+      integration: false
+      e2e: false
+    deployment:
+      production: "https://dokukita.raizora.com"
+
+# Shared packages
+packages:
+  ui:
+    description: "Shared UI component library"
+    dependencies:
+      - react
+      - tailwind
+    exports:
+      - components
+      - hooks
+      - types
+  
+  utils:
+    description: "Common utility functions"
+    exports:
+      - string
+      - date
+      - validation
+
+# Repository synchronization
+sync:
+  repo:
+    - internal: "red-ant-colony/web-monorepo/internal"
+    - packages: "red-ant-colony/web-monorepo/packages"
+
+# CI/CD configuration
+ci_cd:
+  provider: "github-actions"
+  settings:
+    build_cache: true
+    parallel_testing: true
+    deployment:
+      requires_approval: true
+      auto_deploy_preview: true
+
+# Development guidelines
+guidelines:
+  branch_naming: "feature/{ticket-id}-{short-description}"
+  commit_format: "type(scope): message"
+  pr_template: ".github/PULL_REQUEST_TEMPLATE.md"
+  issue_templates:
+    - ".github/ISSUE_TEMPLATE/bug_report.md"
+    - ".github/ISSUE_TEMPLATE/feature_request.md"
+
+# Dependency management
+dependencies:
+  allowed_sources:
+    - "npm"
+    - "github"
+  restricted_licenses:
+    - "AGPL-3.0"
+  security_scanning: true
+  update_schedule: "weekly"

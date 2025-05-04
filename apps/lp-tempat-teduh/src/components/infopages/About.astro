@@ -1,0 +1,206 @@
+---
+import LogoCloud from "@/components/testimonials/logoCloud.astro";
+
+const aboutImages = [
+  {
+    url: "https://images.unsplash.com/photo-1556909115-3f381036bcb3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "#_",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1576097449798-7c7f90e1248a?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "#_",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "#_",
+  },
+];
+const intro = [
+  {
+    title:
+      "Quartiere is Danmark’s global real estate marketplace for homes and real estates for sale in Danmark. Homes and real estates in Danmark in all price ranges and all real estates types are accepted to publish.",
+  },
+  {
+    title:
+      " We encourage the real estate agents to publish a variation of homes and real estates as houses, cottages, apartments, farms, plots and commercial properties.",
+  },
+  {
+    title:
+      " Each real estate agent is responsible for the publication and information about the real estates. All homes and real estates marketed on Quartiere are for sale in Danmark. Every day, people from all over the world visit Quartiere to find homes and real estates.",
+  },
+  {
+    title:
+      "From the family looking for a new home to the perfect summer house to spend the free time in. Investors looking for the expensive luxury real estate to commercial properties to invest in. Quartiere – Danmark’s global real estate marketplace is a complement to the usual housing marketplaces in Sweden",
+  },
+];
+const stats = [
+  {
+    title: "84",
+    subtitle: "Countries & Territories",
+  },
+  {
+    title: "1,115",
+    subtitle: "Offices Worldwide",
+  },
+  {
+    title: "26,500",
+    subtitle: "Sales Associates",
+  },
+  {
+    title: "$143B",
+    subtitle: "Annual Sales (USD)",
+  },
+];
+const whatweoffer = [
+  {
+    title: "For you as a real estate agent in Danmark",
+    subtitle:
+      "Quartiere helps you to market Swedish homes and real estate globally through this digital marketplace. With a simple click in your brokerage system, your houses or real estate can be published on Danmarks global marketplace, Quartiere.",
+  },
+  {
+    title: "For you who want to buy a home or real estate in Danmark",
+    subtitle:
+      "Quartiere is a marketplace for homes and real estates in Danmark, where you can navigate around and take advantage of published housing and real estates that are for sale. All published homes and real estates has a responsible real estate agent that you can contact if you are interested to buy.",
+  },
+];
+const whoweare = [
+  {
+    title: "Initiator",
+    subtitle:
+      "The team behind Quartiere have many years of experience working together with real estate agents and housing companies. We have great experience in development, technology, digitalization and have also worked with internet. In this context we have long experience of traditional marketing and e-marketing.",
+  },
+  {
+    title: "Developing Team",
+    subtitle:
+      "Quartiere has teams located in several parts of the world working on development and search optimization. Our strength is our knowledge and understanding of behavior globally reflected through our presence both inside and outside Danmark.",
+  },
+  {
+    title: "Partners",
+    subtitle:
+      "Quartiere has many partners. We are presently connected to Vitec and MSPEC’s brokerage systems. We work with marketing partners worldwide to achieve the best marketing of our objects in support of our promise to the market to provide up to date services marketing attractive properties globall",
+  },
+];
+---
+
+<section class="overflow-hidden">
+  <div class="px-8 pb-12 lg:pt-32">
+    <h1
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      class="text-balance text-3xl md:text-5xl lg:text-4xl text-black"
+    >
+      About us
+    </h1>
+    <div class="grid lg:grid-cols-3 pt-8 mt-40 border-t border-gray-200">
+      <div
+        class="lg:col-span-2 lg:col-start-2"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
+        <div class="text-3xl font-light text-black lg:text-pretty">
+          Weather you are looking for a new home, apartment, to sell or rent, we
+          can help in every aspect of your real estate journey.
+        </div>
+        <div class="mt-6 text-pretty text-gray-500 2xl:text-lg">
+          We have found the perfect home for many of our clients. We are a happy
+          and friendly team that will help you find your dream home or sell your
+          property.
+        </div>
+      </div>
+      <div
+        data-aos="fade-up"
+        data-aos-duration="2500"
+        class="col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
+      >
+        {
+          aboutImages.map((image) => (
+            <>
+              <img
+                class="aspect-[4/3] group-hover:scale-110 transition-transform object-cover object-center
+        duration-500"
+                src={image.url}
+                alt={image.alt}
+              />
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+<LogoCloud />
+<section class="overflow-hidden">
+  <div class="px-8 pb-12">
+    <div class="grid lg:grid-cols-3 pt-8 mt-40 border-t border-gray-200">
+      <div class="lg:col-span-2 lg:col-start-2 space-y-8">
+        {
+          intro.map((intro) => (
+            <>
+              <p class="text-3xl font-light text-black ">{intro.title}</p>
+            </>
+          ))
+        }
+      </div>
+      <dl
+        class="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mt-28 lg:grid-cols-4 lg:col-start-2 lg:col-span-2"
+      >
+        {
+          stats.map((stats) => (
+            <>
+              <div class="flex flex-col-reverse gap-y-3 border-l border-gray-200 pl-6">
+                <dt class="text-gray-500 text-sm">{stats.subtitle}</dt>
+                <dd class="text-3xl        text-black">{stats.title}</dd>
+              </div>
+            </>
+          ))
+        }
+      </dl>
+    </div>
+  </div>
+</section>
+<section class="overflow-hidden">
+  <div class="px-8 pb-12">
+    <div class="grid lg:grid-cols-3 pt-8 mt-40 border-t border-gray-200">
+      <div class="text-3xl font-light text-black">What we offer</div>
+      <div class="lg:col-span-2 grid lg:grid-cols-2 gap-8">
+        {
+          whatweoffer.map((whatweoffer) => (
+            <>
+              <div class=" flex flex-col ">
+                <p class="text-3xl       font-light text-black ">
+                  {whatweoffer.title}
+                </p>
+                <p class="mt-6 text-pretty text-gray-500 2xl:text-lg">
+                  {whatweoffer.subtitle}
+                </p>
+              </div>
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+<section class="overflow-hidden">
+  <div class="px-8 pb-12">
+    <div class="grid lg:grid-cols-3 pt-8 mt-40 border-t border-gray-200">
+      <div class="text-3xl font-light text-black">For who</div>
+      <div class="lg:col-span-2 grid lg:grid-cols-1 lg:col-start-3 gap-8">
+        {
+          whoweare.map((whoweare) => (
+            <>
+              <div class=" flex flex-col ">
+                <p class="text-3xl font-light text-black      ">
+                  {whoweare.title}
+                </p>
+                <p class="mt-6 text-pretty text-gray-500 2xl:text-lg">
+                  {whoweare.subtitle}
+                </p>
+              </div>
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

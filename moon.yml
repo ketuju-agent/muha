@@ -1,0 +1,40 @@
+workspace:
+  projects:
+    apps/*:
+      type: application
+      language: "typescript"
+    packages/*:
+      type: library
+      language: "typescript"
+
+
+language: node
+
+runner:
+  platform: "node"
+
+tasks:
+  build:
+    command: "pnpm build"
+    inputs: ["src/**/*"]
+    outputs: ["dist"]
+    dependsOn: ["^build"] # Memastikan semua dependency dibuild lebih dulu
+
+  lint:
+    command: "pnpm lint"
+    inputs: ["src/**"]
+    dependsOn: ["^lint"] # Melakukan lint pada dependencies juga
+
+  test:
+    command: "pnpm test"
+    inputs: ["src/**"]
+    dependsOn: ["^test"]
+
+  dev:
+    command: "pnpm dev"
+    dependsOn: ["build"] # Pastikan sudah build sebelum dev
+
+  start:
+    command: "pnpm start"
+    inputs: ["src/**"]
+    dependsOn: ["build"]

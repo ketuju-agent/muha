@@ -1,0 +1,24 @@
+---
+const { customer, feedback, logo, url } = Astro.props;
+---
+
+<li class="flex flex-col h-full justify-between  items-start">
+  <div>
+    <img
+      src={logo}
+      alt={customer}
+    />
+    <p class="lg:text-sm mt-8 text-zinc-500 text-balance">
+      "<em> {feedback}</em>"
+    </p>
+  </div>
+
+  <div class="mt-8">
+    <a
+      href={url}
+      title={customer}
+      class="text-accent-500  hover:text-black duration-200">
+      Read story &nbsp; &nbsp; &rarr;
+    </a>
+  </div>
+</li>

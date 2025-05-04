@@ -1,0 +1,103 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+
+// Services Array
+const services = [
+  {
+    title: "Custom Software Development (Web & Mobile)",
+    description:
+      "Native mobile app development (Swift, Kotlin), Progressive Web Apps (PWA), custom e-commerce platforms, and tailor-made business management systems (ERP/CRM).",
+  },
+  {
+    title: "Website Development (Speed, SEO, UX)",
+    description:
+      "Lightning-fast Jamstack websites (Next.js, Astro), technical SEO audit & optimization, and conversion rate optimization (CRO).",
+  },
+  {
+    title: "UI/UX Design Services",
+    description:
+      "Wireframing & prototyping (Figma, Adobe XD), UX research & user testing, and user journey redesign (UX mapping).",
+  },
+  {
+    title: "Digital Strategy & Consultation",
+    description:
+      "Digital transformation roadmap, brand strategy for online presence, and KPI-driven digital marketing strategy.",
+  },
+  {
+    title: "SEO & Content Marketing Services",
+    description:
+      "Technical SEO, local & international SEO, content writing (blogs, whitepapers, case studies), and conversion copywriting (landing pages, ads).",
+  },
+  {
+    title: "Paid Ads Management (Performance Marketing)",
+    description:
+      "Meta Ads (Facebook/Instagram) optimization, Google Ads (Search, Display, Shopping), TikTok Ads & YouTube Ads scaling.",
+  },
+  {
+    title: "Automation & System Integration",
+    description:
+      "CRM integration with email marketing tools, AI chatbot lead nurturing automation, and workflow automation via Zapier, Make.com, etc.",
+  },
+  {
+    title: "Cybersecurity Solutions",
+    description:
+      "Penetration testing, cyber risk assessment, and website & application hardening.",
+  },
+  {
+    title: "AI-driven Solutions",
+    description:
+      "AI chatbot for customer service, AI-powered recommendation systems for e-commerce, and predictive analytics for marketing.",
+  },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-24">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 overflow-hidden"
+    >
+      <Text
+        tag="h3"
+        variant="displayXL"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        class="dark:text-white text-base-900 font-medium tracking-tighter text-balance"
+      >
+        services
+      </Text>
+      <div
+        class="flex flex-col sm:col-span-2 lg:col-span-3 divide-y divide-base-200 dark:divide-base-800 border-y border-base-200 dark:border-base-800"
+      >
+        {
+          services.map((service, index) => (
+            <div class="grid grid-cols-1 lg:grid-cols-3 py-4">
+              <Text
+                tag="h4"
+                variant="textBase"
+                data-aos="fade-up"
+                data-aos-duration="1500"
+                class="dark:text-white text-base-900 font-medium tracking-tight text-balance"
+              >
+                <span>(0{index + 1})</span>
+                {service.title}
+              </Text>
+              <div class="lg:col-span-2 overflow-hidden">
+                <Text
+                  tag="h4"
+                  variant="textBase"
+                  data-aos="fade-up"
+                  data-aos-duration="2000"
+                  class="dark:text-base-400 text-base-600"
+                >
+                  {service.description}
+                </Text>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Wrapper>
+</section>

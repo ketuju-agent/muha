@@ -1,0 +1,50 @@
+---
+const faqData = [
+  {
+    question: "How does end-to-end encryption work?",
+    answer:
+      "End-to-end encryption ensures that only the sender and recipient can access the content of a message. The information is encrypted on the sender's device and can only be decrypted by the intended recipient, preventing any intermediaries, including the platform provider, from accessing the data.",
+  },
+  {
+    question: "Can I use this platform on multiple devices?",
+    answer:
+      "Yes, you can access our platform on multiple devices. Your encrypted data remains synced across all devices, allowing you to seamlessly communicate and access your files and messages from anywhere.",
+  },
+  {
+    question: "Are there any storage limitations for files and documents?",
+    answer:
+      "Our platform provides ample storage space for your files and documents. However, there may be storage limitations based on the pricing plan you choose. We offer flexible plans to suit your needs and provide options to upgrade if you require additional storage capacity.",
+  },
+  {
+    question: "Is it possible to export my data from the platform?",
+    answer:
+      "Yes, you can export your data from the platform. We offer export features that allow you to download your messages, files, and documents, ensuring you have a local copy for backup or migration purposes. It provides you with greater control and flexibility over your data.",
+  },
+];
+---
+
+<section>
+  <div class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-12">
+    <div>
+      <p
+        class="text-4xl tracking-tight font-medium text-black md:text-7xl font-display">
+        Answers to our most <span class="text-accent-500"
+          >frequantly asked questions</span
+        >
+      </p>
+    </div>
+    <div
+      class="space-y-16 sm:grid sm:grid-cols-2 mt-20 sm:gap-x-6 sm:gap-y-16 sm:space-y-0 lg:gap-x-10">
+      {
+        faqData.map((faq) => (
+          <div>
+            <div class="font-display text-xl leading-7 tracking-tight text-black">
+              {faq.question}
+            </div>
+            <div class="mt-2 text-sm leading-7 text-gray-600">{faq.answer}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

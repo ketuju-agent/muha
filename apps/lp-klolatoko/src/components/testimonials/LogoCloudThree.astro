@@ -1,0 +1,80 @@
+---
+const brandImages = [
+  {
+    src: "/assets/brands/Afterpay.svg",
+    alt: "Afterpay Logo",
+  },
+  {
+    src: "/assets/brands/Attentive.svg",
+    alt: "Attentive Logo",
+  },
+  {
+    src: "/assets/brands/Coinbase.svg",
+    alt: "Coinbase Logo",
+  },
+  {
+    src: "/assets/brands/Figma.svg",
+    alt: "Figma Logo",
+  },
+  {
+    src: "/assets/brands/Zoom.svg",
+    alt: "Zoom Logo",
+  },
+  {
+    src: "/assets/brands/Darkly.svg",
+    alt: "Darkly Logo",
+  },
+  {
+    src: "/assets/brands/Docusign.svg",
+    alt: "Docusign Logo",
+  },
+  {
+    src: "/assets/brands/Dribbble.svg",
+    alt: "Dribbble Logo",
+  },
+  {
+    src: "/assets/brands/Github.svg",
+    alt: "GitHub Logo",
+  },
+  {
+    src: "/assets/brands/Plaid.svg",
+    alt: "Plaid Logo",
+  },
+  {
+    src: "/assets/brands/Sonos.svg",
+    alt: "Sonos Logo",
+  },
+  {
+    src: "/assets/brands/Uber.svg",
+    alt: "Uber Logo",
+  },
+];
+---
+
+<sectio>
+  <div class="max-w-7xl px-8 md:px-12 lg:px-32 mx-auto py-24">
+    <div class="items-center">
+      <div class="border-b border-zinc-300 pb-5">
+        <h3 class="text-base font-semibold leading-6 text-accent-500">
+          Oru investors
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-3 gap-8 md:grid-cols-6 lg:gap-y-24 mt-12">
+        {
+          brandImages.map((image, index) => (
+            <>
+              <div class="flex col-span-1">
+                <img
+                  class="max-h-12"
+                  src={image.src}
+                  alt={image.alt}
+                />
+              </div>
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</sectio>

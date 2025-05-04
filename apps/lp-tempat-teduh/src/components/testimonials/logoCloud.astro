@@ -1,0 +1,43 @@
+---
+const logoCloud = [
+  {
+    url: "/brands/1.svg",
+    alt: "#_",
+  },
+  {
+    url: "/brands/2.svg",
+    alt: "#_",
+  },
+  {
+    url: "/brands/3.svg",
+    alt: "#_",
+  },
+  {
+    url: "/brands/4.svg",
+    alt: "#_",
+  },
+  {
+    url: "/brands/5.svg",
+    alt: "#_",
+  },
+];
+---
+
+<section>
+  <div class="px-8 py-8">
+
+    <div class=" flex flex-wrap justify-between ">
+      {
+        logoCloud.map((image) => (
+          <div class="flex justify-center col-span-1 px-8">
+            <img
+              class="max-h-12"
+              src={image.url}
+              alt={image.alt}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
